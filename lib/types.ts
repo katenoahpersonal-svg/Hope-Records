@@ -6,13 +6,37 @@ export type EvidenceStatus =
   | "REPORTED ALLEGATION"
   | "DISPUTED"
   | "UNVERIFIED"
-  | "INVESTIGATIVE QUESTION";
+  | "INVESTIGATIVE QUESTION"
+  | "OFFICIAL ACCOUNT"
+  | "ADVOCACY / PARTY SOURCE";
 
 export type CaseStatus =
   | "OPEN RESEARCH"
   | "NEW TRIAL ORDERED"
   | "UNRESOLVED"
+  | "TRIAL SCHEDULED"
   | "ARCHIVED";
+
+export interface FindingRecord {
+  label: EvidenceStatus;
+  title: string;
+  body: string;
+}
+
+export interface TimelineRecord {
+  date: string;
+  title: string;
+  body: string;
+  label?: EvidenceStatus;
+}
+
+export interface SourceRecord {
+  title: string;
+  publisher: string;
+  url: string;
+  kind: "PRIMARY" | "OFFICIAL" | "REPUTABLE REPORTING" | "ADVOCACY / PARTY SOURCE";
+  note?: string;
+}
 
 export interface CaseRecord {
   slug: string;
@@ -21,8 +45,15 @@ export interface CaseRecord {
   location: string;
   dateLabel: string;
   summary: string;
+  heroImage: string;
+  galleryImage: string;
+  imageNote: string;
   tags: string[];
+  findings: FindingRecord[];
+  timeline: TimelineRecord[];
   questions: string[];
+  sources: SourceRecord[];
+  editorialNote: string;
 }
 
 export interface DocumentRecord {
@@ -33,4 +64,5 @@ export interface DocumentRecord {
   date: string;
   relatedCase: string;
   status: EvidenceStatus[];
+  url?: string;
 }
