@@ -41,7 +41,7 @@ export function ExploreMap() {
       <div className="usMapCanvas">
         <img
           className="usMapImage"
-          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Blank_US_Map_(states_only).svg"
+          src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Blank_US_Map_%28states_only%29.svg"
           alt="Map of the United States"
         />
 
