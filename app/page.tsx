@@ -5,7 +5,8 @@ import { ExploreMap } from "@/components/ExploreMap";
 import { CaseCard } from "@/components/CaseCard";
 import { DocumentCard } from "@/components/DocumentCard";
 import { RecordGraph } from "@/components/RecordGraph";
-import { cases, documents } from "@/lib/mock-data";
+import { cases } from "@/lib/mock-data";
+import { verifiedDocuments } from "@/lib/verified-documents";
 
 export default function HomePage() {
   return (
@@ -40,18 +41,18 @@ export default function HomePage() {
               {cases.map((item) => <CaseCard item={item} key={item.slug} />)}
             </div>
             <div className="editorialRibbon">
-              <strong>Evidence first.</strong>
-              <span>No crowd-sourced accusation becomes a fact by repetition. Primary records outrank rhetoric, and uncertainty stays visible.</span>
+              <strong>Dignity before drama.</strong>
+              <span>Every file begins with a human being, not a theory. Primary records guide the work; uncertainty stays visible; love never requires us to abandon rigor.</span>
             </div>
           </section>
 
           <section className="contentSection vaultPreview">
             <div className="sectionHeading">
-              <p className="eyebrow">Document vault</p>
+              <p className="eyebrow">Verified record vault</p>
               <Link href="/vault">View all documents →</Link>
             </div>
             <div className="documentGrid">
-              {documents.map((item) => <DocumentCard item={item} key={item.id} />)}
+              {verifiedDocuments.slice(0, 4).map((item) => <DocumentCard item={item} key={item.id} />)}
             </div>
           </section>
 
