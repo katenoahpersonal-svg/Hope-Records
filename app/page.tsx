@@ -27,30 +27,21 @@ export default function HomePage() {
             <p className="missionLine">Every story deserves a record. Every record deserves context.</p>
           </section>
 
-          <section className="contentSection" id="investigations">
-            <div className="sectionHeading">
-              <p className="eyebrow">Featured research workspaces</p>
-              <Link href="/#investigations">View all cases →</Link>
-            </div>
-            <div className="featuredGrid">
-              <div className="caseGrid">
-                {cases.map((item) => <CaseCard item={item} key={item.slug} />)}
+          <section className="contentSection prioritySection" id="investigations">
+            <div className="sectionHeading priorityHeading">
+              <div>
+                <p className="eyebrow">Priority investigations · source review Aug. 23, 2026</p>
+                <h2>Nolan Wells · Latarsha Sanders · Keshia Golden</h2>
               </div>
-              <aside className="sharePanel">
-                <p className="eyebrow">Share your story</p>
-                <h2>What would you like preserved?</h2>
-                {[
-                  ["My Story", "Share your experience"],
-                  ["Family History", "Preserve your family’s record"],
-                  ["Upload a Document", "Add a verifiable record"],
-                  ["Report a Case", "Bring attention to a case"]
-                ].map(([title, sub]) => (
-                  <Link href="/share" className="shareOption" key={title}>
-                    <span><strong>{title}</strong><small>{sub}</small></span><b>›</b>
-                  </Link>
-                ))}
-                <Link className="primaryButton" href="/share">Get started</Link>
-              </aside>
+              <Link href="/#investigations">Three active files →</Link>
+            </div>
+            <p className="priorityIntro">These are the archive's three primary case files right now. Each page separates verified facts, attributed accounts, disputed claims, unresolved questions, and the source trail used to support publication.</p>
+            <div className="caseGrid priorityCaseGrid">
+              {cases.map((item) => <CaseCard item={item} key={item.slug} />)}
+            </div>
+            <div className="editorialRibbon">
+              <strong>Evidence first.</strong>
+              <span>No crowd-sourced accusation becomes a fact by repetition. Primary records outrank rhetoric, and uncertainty stays visible.</span>
             </div>
           </section>
 
@@ -62,6 +53,26 @@ export default function HomePage() {
             <div className="documentGrid">
               {documents.map((item) => <DocumentCard item={item} key={item.id} />)}
             </div>
+          </section>
+
+          <section className="contentSection homeShareSection">
+            <aside className="sharePanel">
+              <p className="eyebrow">Share your story</p>
+              <h2>What would you like preserved?</h2>
+              <div className="homeShareOptions">
+                {[
+                  ["My Story", "Share your experience"],
+                  ["Family History", "Preserve your family’s record"],
+                  ["Upload a Document", "Add a verifiable record"],
+                  ["Report a Case", "Bring attention to a case"]
+                ].map(([title, sub]) => (
+                  <Link href="/share" className="shareOption" key={title}>
+                    <span><strong>{title}</strong><small>{sub}</small></span><b>›</b>
+                  </Link>
+                ))}
+              </div>
+              <Link className="primaryButton" href="/share">Get started</Link>
+            </aside>
           </section>
 
           <RecordGraph />
