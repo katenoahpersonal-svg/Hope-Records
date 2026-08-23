@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Badge } from "./Badge";
 import type { CaseRecord } from "@/lib/types";
-import { getCaseHeroImage } from "@/lib/display-media";
+import { getCaseGalleryImages } from "@/lib/media-overrides";
 
 type TabKey = "overview" | "timeline" | "questions" | "media" | "sources";
 
@@ -17,10 +17,8 @@ const tabs: Array<{ id: TabKey; label: string }> = [
 
 export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
-  const [galleryFailed, setGalleryFailed] = useState(false);
-  const heroImage = getCaseHeroImage(item);
-
   const tabIds = useMemo(() => new Set<TabKey>(tabs.map((tab) => tab.id)), []);
+  const galleryImages = getCaseGalleryImages(item);
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "") as TabKey;
@@ -129,15 +127,14 @@ export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
               </div>
             </div>
             <div className="casePhotoGrid">
-              <img className="casePhotoTile leadPhotoTile" src={heroImage} alt={`${item.name} case photograph`} />
-              {!galleryFailed && item.galleryImage !== heroImage ? (
+              {galleryImages.map((src, index) => (
                 <img
-                  className="casePhotoTile archivePhotoTile"
-                  src={item.galleryImage}
-                  alt={`${item.name} photo archive`}
-                  onError={() => setGalleryFailed(true)}
+                  className={index === 0 ? "casePhotoTile leadPhotoTile" : "casePhotoTile archivePhotoTile"}
+                  src={src}
+                  alt={`${item.name} photo ${index + 1}`}
+                  key={`${src}-${index}`}
                 />
-              ) : null}
+              ))}
             </div>
           </article>
         ) : null}
