@@ -13,6 +13,13 @@ export function DocumentCard({ item }: { item: DocumentRecord }) {
       <div className="badgeRow">
         {item.status.map((status) => <Badge key={status}>{status}</Badge>)}
       </div>
+      {item.url ? (
+        <a className="documentSourceLink" href={item.url} target="_blank" rel="noreferrer">
+          Open source record ↗
+        </a>
+      ) : (
+        <p className="documentPending">Underlying public file still being located.</p>
+      )}
     </article>
   );
 }
