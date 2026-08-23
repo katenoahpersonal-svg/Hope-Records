@@ -85,12 +85,6 @@
   box-shadow: var(--shadow);
 }
 .caseHeroPortrait img { width: 100%; height: 500px; object-fit: cover; display: block; }
-.caseHeroPortrait figcaption {
-  padding: 11px 13px;
-  color: var(--muted);
-  font-size: 9px;
-  line-height: 1.5;
-}
 .heroTags { margin-top: 18px; }
 .evidenceStandardCard { border-left: 4px solid var(--plum-2); }
 .findingGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -127,20 +121,21 @@
 .timelineResearchItem small { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
 .timelineResearchItem strong { display: block; font: 500 20px/1.2 Georgia, serif; }
 .timelineResearchItem p { color: #625b62; line-height: 1.65; margin: 7px 0 8px; }
+.timelineEvidenceRow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.timelineEvidenceRow .badgeRow, .timelineEvidenceRow .badge { margin-top: 0; }
+.timelineSourceLink {
+  color: var(--plum);
+  font-size: 10px;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: #cbbacb;
+  text-underline-offset: 3px;
+}
+.timelineSourceLink:hover { color: var(--plum-2); }
 .researchQuestions { counter-reset: record-question; }
 .researchQuestions li { line-height: 1.65; }
 .mediaCard { overflow: hidden; }
 .mediaHeading { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
-.mediaHeading span {
-  flex: 0 0 auto;
-  border-radius: 999px;
-  background: #f0e4da;
-  color: #6f5548;
-  padding: 7px 9px;
-  font-size: 8px;
-  font-weight: 900;
-  letter-spacing: .1em;
-}
 .caseGalleryImage {
   width: 100%;
   max-height: 760px;
@@ -151,7 +146,7 @@
   background: #eee9e5;
   border: 1px solid #ded8d3;
 }
-.mediaNote { color: var(--muted); font-size: 10px; line-height: 1.6; }
+.sourceIntro { max-width: 860px; color: var(--muted); font-size: 12px; line-height: 1.7; }
 .sourceList { display: grid; gap: 9px; margin-top: 18px; }
 .sourceRow {
   border: 1px solid #e0dbd7;
@@ -174,6 +169,15 @@
 .badge-official-account { background: #e3e7ef; color: #465469; }
 .badge-advocacy-\/\/-party-source { background: #efe3ea; color: #674b5b; }
 .badge-unverified { background: #eee8df; color: #6d5f4f; }
+.documentSourceLink {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--plum);
+  font-size: 10px;
+  font-weight: 900;
+}
+.documentSourceLink:hover { text-decoration: underline; text-underline-offset: 3px; }
+.documentPending { margin-top: 12px !important; font-style: italic; line-height: 1.45; }
 
 @media (max-width: 1150px) {
   .priorityCaseGrid { grid-template-columns: 1fr; }
@@ -193,4 +197,5 @@
   .mediaHeading { display: grid; }
   .homeShareOptions { grid-template-columns: 1fr; }
   .editorialRibbon { display: grid; }
+  .timelineEvidenceRow { align-items: flex-start; }
 }
