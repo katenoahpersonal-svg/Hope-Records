@@ -31,8 +31,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <div className="caseTagRow heroTags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           </div>
           <figure className="caseHeroPortrait">
-            <img src={item.heroImage} alt={`${item.name} — user-supplied research photograph`} />
-            <figcaption>{item.imageNote}</figcaption>
+            <img src={item.heroImage} alt={`${item.name} case photograph`} />
           </figure>
         </header>
 
@@ -40,7 +39,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           <a href="#overview">What the record shows</a>
           <a href="#timeline">Timeline</a>
           <a href="#questions">Questions</a>
-          <a href="#media">Media</a>
+          <a href="#media">Photos</a>
           <a href="#sources">Sources</a>
         </nav>
 
@@ -93,18 +92,17 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           <article className="workspaceCard mediaCard" id="media">
             <div className="mediaHeading">
               <div>
-                <p className="eyebrow">Research media</p>
-                <h2>User-supplied image set</h2>
+                <p className="eyebrow">Photo archive</p>
+                <h2>Remembering the people at the center of the record</h2>
               </div>
-              <span>PROVENANCE REVIEW PENDING</span>
             </div>
-            <img className="caseGalleryImage" src={item.galleryImage} alt={`${item.name} user-supplied research image collection`} />
-            <p className="mediaNote">{item.imageNote} Images are associated with this case because they were supplied in the case-specific research batch; identities or relationships are not inferred from the photographs themselves.</p>
+            <img className="caseGalleryImage" src={item.galleryImage} alt={`${item.name} photo collection`} />
           </article>
 
           <article className="workspaceCard" id="sources">
             <p className="eyebrow">Source trail</p>
-            <h2>Records and reporting used for this review</h2>
+            <h2>Primary records, family voices, official sources, and careful reporting</h2>
+            <p className="sourceIntro">We prioritize original court records and government documents first, then direct family or counsel statements, civil-rights organizations working with the family, and reputable reporting that clearly identifies its underlying evidence.</p>
             <div className="sourceList">
               {item.sources.map((source) => (
                 <a className="sourceRow" href={source.url} target="_blank" rel="noreferrer" key={source.url}>
@@ -120,8 +118,8 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           </article>
 
           <article className="workspaceCard warningCard publicationCaution">
-            <p className="eyebrow">Publication caution</p>
-            <h2>What this file does not claim</h2>
+            <p className="eyebrow">Editorial promise</p>
+            <h2>Care before conclusion.</h2>
             <p>{item.editorialNote}</p>
           </article>
         </section>
