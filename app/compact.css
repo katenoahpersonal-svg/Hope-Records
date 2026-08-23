@@ -1,0 +1,246 @@
+/* Compact archive navigation + geographic case map */
+
+/* ---------- Homepage: shorter featured records ---------- */
+.compactPriorityCard { min-width: 0; }
+.compactCasePortrait { height: 182px; }
+.compactCaseCardBody { padding: 16px 18px 18px; }
+.compactCaseCardBody .caseCardHeading h3 { font-size: 21px; margin-bottom: 7px; }
+.compactCaseCardBody .caseMeta { margin: 8px 0; }
+.compactCaseSummary {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 61px;
+  margin: 8px 0 13px !important;
+}
+
+/* ---------- Real US case map ---------- */
+.usMapPanel {
+  height: auto;
+  margin: 0 -34px;
+  padding: 26px 34px 18px;
+  background: linear-gradient(180deg, #ece9e8 0%, #f4f0ed 100%);
+  overflow: visible;
+}
+.usMapHeading {
+  width: min(960px, 94%);
+  margin: 0 auto 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 18px;
+}
+.usMapHeading > div { display: grid; gap: 4px; }
+.usMapHeading span {
+  text-transform: uppercase;
+  letter-spacing: .11em;
+  font-size: 9px;
+  font-weight: 900;
+  color: #625a62;
+}
+.usMapHeading strong {
+  font: 500 clamp(21px, 2vw, 30px)/1.15 Georgia, "Times New Roman", serif;
+}
+.usMapHeading small { color: var(--muted); font-size: 10px; }
+.usMapCanvas {
+  position: relative;
+  width: min(960px, 94%);
+  aspect-ratio: 959 / 593;
+  margin: 0 auto;
+}
+.usMapImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  opacity: .83;
+  filter: sepia(.08) saturate(.55) contrast(.92);
+}
+.caseMapLocation {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  display: block;
+}
+.caseMapDot {
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  background: var(--plum);
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(55, 38, 55, .35);
+  z-index: 2;
+}
+.caseMapPulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(79, 49, 84, .18);
+  animation: caseMapPulse 2.4s ease-out infinite;
+}
+@keyframes caseMapPulse {
+  0% { transform: scale(.55); opacity: .9; }
+  70%, 100% { transform: scale(1.65); opacity: 0; }
+}
+.caseMapLabel {
+  position: absolute;
+  left: 20px;
+  top: -8px;
+  width: max-content;
+  max-width: 190px;
+  display: grid;
+  gap: 2px;
+  padding: 7px 9px;
+  border: 1px solid rgba(79, 49, 84, .18);
+  border-radius: 8px;
+  background: rgba(255, 253, 249, .94);
+  box-shadow: 0 7px 18px rgba(45, 33, 45, .10);
+  pointer-events: none;
+}
+.caseMapLabel strong { font-size: 10px; line-height: 1.2; color: var(--plum); }
+.caseMapLabel small { font-size: 8px; line-height: 1.25; color: var(--muted); }
+.caseMapPinMassachusetts .caseMapLabel { left: auto; right: 20px; top: -10px; text-align: right; }
+.caseMapPinChicago .caseMapLabel { top: -22px; }
+.caseMapPinMississippi .caseMapLabel { top: -1px; }
+.caseMapLocation:hover .caseMapDot { transform: scale(1.22); background: var(--plum-2); }
+.caseMapLocation:hover .caseMapLabel { border-color: #9f84a4; box-shadow: 0 10px 24px rgba(45, 33, 45, .16); }
+.usMapLegend {
+  width: min(960px, 94%);
+  margin: 6px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 8px;
+}
+.usMapLegend span { display: flex; align-items: center; gap: 6px; }
+.usMapLegend i { width: 8px; height: 8px; border-radius: 50%; background: var(--plum); display: inline-block; }
+
+/* ---------- Case pages: dashboard instead of endless scroll ---------- */
+.compactResearchedCasePage { padding-top: 28px; padding-bottom: 34px; }
+.compactBackLink { margin-bottom: 20px; }
+.compactCaseHero { gap: 34px; align-items: center; }
+.compactCaseHero h1 { font-size: clamp(38px, 5vw, 62px); }
+.compactCaseHero .caseHeroSummary { font-size: 15px; line-height: 1.62; }
+.caseLocationLine { color: var(--muted); font-size: 12px; }
+.compactHeroPortrait img { height: 330px; }
+
+.compactCaseWorkspace { margin-top: 26px; }
+.caseTabButtons {
+  position: sticky;
+  top: 10px;
+  z-index: 30;
+  display: flex;
+  gap: 7px;
+  margin: 0 0 16px;
+  padding: 8px;
+  border: 1px solid #ddd5dc;
+  border-radius: 14px;
+  background: rgba(255, 253, 249, .94);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 10px 24px rgba(58, 44, 57, .08);
+  overflow-x: auto;
+}
+.caseTabButton {
+  flex: 1 0 auto;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #665d65;
+  font-size: 11px;
+  font-weight: 800;
+}
+.caseTabButton:hover { background: #f4edf4; color: var(--plum); }
+.caseTabButton.active {
+  background: var(--plum);
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(79, 49, 84, .18);
+}
+.caseTabPanel { min-height: 360px; }
+.caseTabStack { display: grid; gap: 14px; }
+.caseTabPanel .workspaceCard { margin: 0; }
+.tabFeatureCard { padding: 26px 28px; }
+.tabFeatureCard > h2,
+.compactEvidenceCard h2,
+.compactPromiseCard h2 { margin-top: 0; }
+.tabLead { color: var(--muted); font-size: 12px; line-height: 1.65; max-width: 820px; }
+.compactEvidenceCard {
+  display: grid;
+  grid-template-columns: minmax(240px, .9fr) minmax(320px, 1.1fr);
+  gap: 14px 30px;
+  align-items: start;
+  padding: 22px 26px;
+}
+.compactEvidenceCard .badgeRow { grid-column: 1 / -1; }
+.compactEvidenceCard > p { margin: 0; color: #625b62; line-height: 1.65; font-size: 12px; }
+.compactFindingGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.compactFindingGrid .findingCard { padding: 20px; }
+.compactFindingGrid .findingCard h2 { font-size: 18px; line-height: 1.25; }
+.compactFindingGrid .findingCard p { font-size: 12px; line-height: 1.58; }
+.compactPromiseCard { padding: 20px 24px; background: #fff9f7; }
+.compactPromiseCard p:last-child { color: #625b62; line-height: 1.65; font-size: 12px; }
+
+.compactTimeline { margin-top: 20px; max-width: 900px; }
+.compactTimeline .timelineResearchItem { padding-bottom: 18px; }
+.compactTimeline .timelineResearchItem strong { font-size: 18px; }
+.compactTimeline .timelineResearchItem p { font-size: 12px; line-height: 1.58; }
+.compactQuestions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px 34px;
+  margin-top: 24px;
+}
+.compactQuestions li { margin: 0; padding-right: 12px; font-size: 13px; line-height: 1.55; }
+.compactSourceList { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+.compactSourceList .sourceRow { min-height: 98px; padding: 12px 13px; }
+.compactSourceList .sourceRow strong { font-size: 12px; line-height: 1.3; }
+.compactSourceList .sourceRow small { font-size: 9px; }
+.casePhotoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.casePhotoTile {
+  width: 100%;
+  height: 390px;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+  background: #eee9e5;
+  border: 1px solid #ded8d3;
+}
+.archivePhotoTile { object-fit: contain; }
+
+@media (max-width: 1150px) {
+  .compactFindingGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .compactSourceList { grid-template-columns: 1fr; }
+  .compactHeroPortrait img { height: 420px; }
+}
+
+@media (max-width: 760px) {
+  .compactCasePortrait { height: 220px; }
+  .usMapPanel { margin: 0 -34px; padding-left: 18px; padding-right: 18px; }
+  .usMapHeading, .usMapCanvas, .usMapLegend { width: 100%; }
+  .usMapHeading { align-items: start; }
+  .usMapHeading small { display: none; }
+  .caseMapLabel { display: none; }
+  .caseMapLocation { width: 28px; height: 28px; }
+  .caseMapDot { inset: 6px; }
+  .compactEvidenceCard { grid-template-columns: 1fr; }
+  .compactEvidenceCard .badgeRow { grid-column: auto; }
+  .compactFindingGrid { grid-template-columns: 1fr; }
+  .compactQuestions { grid-template-columns: 1fr; }
+  .casePhotoGrid { grid-template-columns: 1fr; }
+  .casePhotoTile { height: 360px; }
+  .caseTabButton { padding: 9px 12px; }
+  .tabFeatureCard { padding: 21px 18px; }
+}
