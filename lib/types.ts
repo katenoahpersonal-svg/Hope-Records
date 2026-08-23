@@ -28,6 +28,8 @@ export interface TimelineRecord {
   title: string;
   body: string;
   label?: EvidenceStatus;
+  url?: string;
+  sourceLabel?: string;
 }
 
 export interface SourceRecord {
