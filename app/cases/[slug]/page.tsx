@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { CaseWorkspaceTabs } from "@/components/CaseWorkspaceTabs";
 import { cases } from "@/lib/mock-data";
 import { applyEditorialOverrides } from "@/lib/editorial-overrides";
+import { getCaseHeroImage } from "@/lib/display-media";
 
 export function generateStaticParams() {
   return cases.map((item) => ({ slug: item.slug }));
@@ -16,6 +17,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   const baseItem = cases.find((entry) => entry.slug === slug);
   if (!baseItem) notFound();
   const item = applyEditorialOverrides(baseItem);
+  const heroImage = getCaseHeroImage(item);
 
   return (
     <main className="appShell">
@@ -33,7 +35,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
             <div className="caseTagRow heroTags">{item.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
           </div>
           <figure className="caseHeroPortrait compactHeroPortrait">
-            <img src={item.heroImage} alt={`${item.name} case photograph`} />
+            <img src={heroImage} alt={`${item.name} case photograph`} />
           </figure>
         </header>
 
