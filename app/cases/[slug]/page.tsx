@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Badge } from "@/components/Badge";
 import { cases } from "@/lib/mock-data";
+import { applyEditorialOverrides } from "@/lib/editorial-overrides";
 
 export function generateStaticParams() {
   return cases.map((item) => ({ slug: item.slug }));
@@ -12,8 +13,9 @@ export const dynamicParams = false;
 
 export default async function CasePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = cases.find((entry) => entry.slug === slug);
-  if (!item) notFound();
+  const baseItem = cases.find((entry) => entry.slug === slug);
+  if (!baseItem) notFound();
+  const item = applyEditorialOverrides(baseItem);
 
   return (
     <main className="appShell">
