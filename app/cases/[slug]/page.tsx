@@ -76,7 +76,14 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
                     <small>{event.date}</small>
                     <strong>{event.title}</strong>
                     <p>{event.body}</p>
-                    {event.label ? <Badge>{event.label}</Badge> : null}
+                    <div className="timelineEvidenceRow">
+                      {event.label ? <Badge>{event.label}</Badge> : null}
+                      {event.url ? (
+                        <a className="timelineSourceLink" href={event.url} target="_blank" rel="noreferrer">
+                          {event.sourceLabel ?? "Open supporting record"} ↗
+                        </a>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               ))}
