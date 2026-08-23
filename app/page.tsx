@@ -6,7 +6,10 @@ import { CaseCard } from "@/components/CaseCard";
 import { DocumentCard } from "@/components/DocumentCard";
 import { RecordGraph } from "@/components/RecordGraph";
 import { cases } from "@/lib/mock-data";
+import { applyEditorialOverrides } from "@/lib/editorial-overrides";
 import { verifiedDocuments } from "@/lib/verified-documents";
+
+const featuredCases = cases.map(applyEditorialOverrides);
 
 export default function HomePage() {
   return (
@@ -31,25 +34,25 @@ export default function HomePage() {
           <section className="contentSection prioritySection" id="investigations">
             <div className="sectionHeading priorityHeading">
               <div>
-                <p className="eyebrow">Priority investigations · source review Aug. 23, 2026</p>
+                <p className="eyebrow">Featured records · evidence review Aug. 23, 2026</p>
                 <h2>Nolan Wells · Latarsha Sanders · Keshia Golden</h2>
               </div>
-              <Link href="/#investigations">Three active files →</Link>
+              <Link href="/#investigations">Three living records →</Link>
             </div>
-            <p className="priorityIntro">These are the archive's three primary case files right now. Each page separates verified facts, attributed accounts, disputed claims, unresolved questions, and the source trail used to support publication.</p>
+            <p className="priorityIntro">Three people, three families, three records deserving care. We begin with primary documents and direct voices, separate what is known from what is disputed, and leave room for unanswered questions without turning uncertainty into accusation.</p>
             <div className="caseGrid priorityCaseGrid">
-              {cases.map((item) => <CaseCard item={item} key={item.slug} />)}
+              {featuredCases.map((item) => <CaseCard item={item} key={item.slug} />)}
             </div>
             <div className="editorialRibbon">
               <strong>Dignity before drama.</strong>
-              <span>Every file begins with a human being, not a theory. Primary records guide the work; uncertainty stays visible; love never requires us to abandon rigor.</span>
+              <span>Every file begins with a human being, not a theory. Court records and public documents guide the work; family voices are heard directly; uncertainty stays visible; love never requires us to abandon rigor.</span>
             </div>
           </section>
 
           <section className="contentSection vaultPreview">
             <div className="sectionHeading">
               <p className="eyebrow">Verified record vault</p>
-              <Link href="/vault">View all documents →</Link>
+              <Link href="/vault">View all records →</Link>
             </div>
             <div className="documentGrid">
               {verifiedDocuments.slice(0, 4).map((item) => <DocumentCard item={item} key={item.id} />)}
