@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Badge } from "./Badge";
 import type { CaseRecord } from "@/lib/types";
+import { getCaseHeroImage } from "@/lib/display-media";
 
 type TabKey = "overview" | "timeline" | "questions" | "media" | "sources";
 
@@ -17,6 +18,7 @@ const tabs: Array<{ id: TabKey; label: string }> = [
 export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
   const [galleryFailed, setGalleryFailed] = useState(false);
+  const heroImage = getCaseHeroImage(item);
 
   const tabIds = useMemo(() => new Set<TabKey>(tabs.map((tab) => tab.id)), []);
 
@@ -127,8 +129,8 @@ export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
               </div>
             </div>
             <div className="casePhotoGrid">
-              <img className="casePhotoTile leadPhotoTile" src={item.heroImage} alt={`${item.name} case photograph`} />
-              {!galleryFailed && item.galleryImage !== item.heroImage ? (
+              <img className="casePhotoTile leadPhotoTile" src={heroImage} alt={`${item.name} case photograph`} />
+              {!galleryFailed && item.galleryImage !== heroImage ? (
                 <img
                   className="casePhotoTile archivePhotoTile"
                   src={item.galleryImage}
