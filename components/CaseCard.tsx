@@ -1,25 +1,25 @@
 import Link from "next/link";
 import type { CaseRecord } from "@/lib/types";
 import { applyEditorialOverrides } from "@/lib/editorial-overrides";
-import { getCaseHeroImage } from "@/lib/display-media";
+import { applyCaseMediaOverrides } from "@/lib/media-overrides";
 
 export function CaseCard({ item }: { item: CaseRecord }) {
-  const displayItem = applyEditorialOverrides(item);
-  const heroImage = getCaseHeroImage(displayItem);
+  const displayItem = applyCaseMediaOverrides(applyEditorialOverrides(item));
 
   return (
-    <article className="caseCard priorityCard compactPriorityCard">
-      <div className="casePortrait compactCasePortrait">
-        <img src={heroImage} alt={`${displayItem.name} case photograph`} />
-        <span className="casePortraitFlag">FEATURED RECORD</span>
+    <article className="caseCard priorityCard">
+      <div className="casePortrait">
+        <img src={displayItem.heroImage} alt={`${displayItem.name} case photograph`} />
+        <span className="casePortraitFlag">FEATURED FILE</span>
       </div>
-      <div className="caseCardBody compactCaseCardBody">
+      <div className="caseCardBody">
         <div className="caseCardHeading">
           <h3>{displayItem.name}</h3>
           <span className="caseStatus">{displayItem.status}</span>
         </div>
-        <p className="caseMeta">{displayItem.location}</p>
+        <p className="caseMeta">{displayItem.dateLabel} · {displayItem.location}</p>
         <p className="compactCaseSummary">{displayItem.summary}</p>
+        <div className="caseTagRow">{displayItem.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
         <Link href={`/cases/${displayItem.slug}`}>Open living record →</Link>
       </div>
     </article>
