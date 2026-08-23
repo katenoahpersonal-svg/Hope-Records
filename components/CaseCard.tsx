@@ -3,9 +3,10 @@ import type { CaseRecord } from "@/lib/types";
 
 export function CaseCard({ item }: { item: CaseRecord }) {
   return (
-    <article className="caseCard">
-      <div className="portraitPlaceholder" aria-hidden="true">
-        <span>{item.name.split(" ").map((word) => word[0]).join("")}</span>
+    <article className="caseCard priorityCard">
+      <div className="casePortrait">
+        <img src={item.heroImage} alt={`${item.name} — user-supplied research photograph`} />
+        <span className="casePortraitFlag">FEATURED FILE</span>
       </div>
       <div className="caseCardBody">
         <div className="caseCardHeading">
@@ -14,7 +15,8 @@ export function CaseCard({ item }: { item: CaseRecord }) {
         </div>
         <p className="caseMeta">{item.dateLabel} · {item.location}</p>
         <p>{item.summary}</p>
-        <Link href={`/cases/${item.slug}`}>View case →</Link>
+        <div className="caseTagRow">{item.tags.slice(0, 3).map((tag) => <span key={tag}>{tag}</span>)}</div>
+        <Link href={`/cases/${item.slug}`}>Open evidence file →</Link>
       </div>
     </article>
   );
