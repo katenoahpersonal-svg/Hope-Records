@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Badge } from "./Badge";
 import type { CaseRecord } from "@/lib/types";
-import { getCaseGalleryImages, getCaseGallerySheet } from "@/lib/media-overrides";
+import { getCaseGalleryImages } from "@/lib/media-overrides";
 
 type TabKey = "overview" | "timeline" | "questions" | "media" | "sources";
 
@@ -17,14 +17,25 @@ const tabs: Array<{ id: TabKey; label: string }> = [
 
 export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const tabIds = useMemo(() => new Set<TabKey>(tabs.map((tab) => tab.id)), []);
   const galleryImages = getCaseGalleryImages(item);
-  const gallerySheet = getCaseGallerySheet(item);
 
   useEffect(() => {
     const hash = window.location.hash.replace("#", "") as TabKey;
     if (tabIds.has(hash)) setActiveTab(hash);
   }, [tabIds]);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setLightboxIndex(null);
+      if (event.key === "ArrowRight") setLightboxIndex((current) => current === null ? null : (current + 1) % galleryImages.length);
+      if (event.key === "ArrowLeft") setLightboxIndex((current) => current === null ? null : (current - 1 + galleryImages.length) % galleryImages.length);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [lightboxIndex, galleryImages.length]);
 
   function selectTab(tab: TabKey) {
     setActiveTab(tab);
@@ -125,33 +136,49 @@ export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
               <div>
                 <p className="eyebrow">Photo archive</p>
                 <h2>Remembering the people at the center of the record</h2>
-                <p className="tabLead">The complete photo set is preserved intact here so no photograph is distorted, over-cropped, or hidden.</p>
+                <p className="tabLead">Each photograph is preserved as its own image. Select any photo to view it larger.</p>
               </div>
-              <span className="photoCount">{gallerySheet ? `${gallerySheet.count} photographs` : `${galleryImages.length} photographs`}</span>
+              <span className="photoCount">{galleryImages.length} photographs</span>
             </div>
 
-            {gallerySheet ? (
-              <div className="contactSheetFrame">
-                <img
-                  className="contactSheetImage"
-                  src={gallerySheet.sheet}
-                  alt={`${item.name} complete ${gallerySheet.count}-photograph collection`}
-                />
-              </div>
-            ) : (
-              <div className="casePhotoGrid realPhotoGrid">
-                {galleryImages.map((src, index) => (
-                  <figure className="casePhotoFigure" key={`${src}-${index}`}>
+            <div className="casePhotoGrid realPhotoGrid">
+              {galleryImages.map((src, index) => (
+                <figure className="casePhotoFigure" key={`${src}-${index}`}>
+                  <button
+                    type="button"
+                    className="casePhotoButton"
+                    onClick={() => setLightboxIndex(index)}
+                    aria-label={`Open ${item.name} photo ${index + 1}`}
+                  >
                     <img
                       className="casePhotoTile"
                       src={src}
                       alt={`${item.name} photo ${index + 1}`}
                       loading={index > 1 ? "lazy" : "eager"}
                     />
-                  </figure>
-                ))}
+                  </button>
+                </figure>
+              ))}
+            </div>
+
+            {lightboxIndex !== null ? (
+              <div className="photoLightbox" role="dialog" aria-modal="true" aria-label={`${item.name} photo viewer`}>
+                <button className="photoLightboxBackdrop" type="button" onClick={() => setLightboxIndex(null)} aria-label="Close photo viewer" />
+                <div className="photoLightboxContent">
+                  <button className="photoLightboxClose" type="button" onClick={() => setLightboxIndex(null)} aria-label="Close photo viewer">×</button>
+                  <img
+                    className="photoLightboxImage"
+                    src={galleryImages[lightboxIndex]}
+                    alt={`${item.name} photo ${lightboxIndex + 1}`}
+                  />
+                  <div className="photoLightboxControls">
+                    <button type="button" onClick={() => setLightboxIndex((lightboxIndex - 1 + galleryImages.length) % galleryImages.length)}>← Previous</button>
+                    <span>{lightboxIndex + 1} / {galleryImages.length}</span>
+                    <button type="button" onClick={() => setLightboxIndex((lightboxIndex + 1) % galleryImages.length)}>Next →</button>
+                  </div>
+                </div>
               </div>
-            )}
+            ) : null}
           </article>
         ) : null}
 
