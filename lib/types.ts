@@ -15,6 +15,7 @@ export type CaseStatus =
   | "NEW TRIAL ORDERED"
   | "UNRESOLVED"
   | "TRIAL SCHEDULED"
+  | "PLEA ACCEPTED"
   | "ARCHIVED";
 
 export interface FindingRecord {
