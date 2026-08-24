@@ -7,8 +7,8 @@ import "./keshia.css";
 import "./intake.css";
 
 export const metadata: Metadata = {
-  title: "The Living Record",
-  description: "A public-interest archive for verified records, testimony, and unanswered questions.",
+  title: "Hope Record",
+  description: "Hope Record is a public-interest archive for verified records, testimony, and unanswered questions.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
