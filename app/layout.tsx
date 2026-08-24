@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./priority.css";
 import "./compact.css";
+import "./gallery.css";
 
 export const metadata: Metadata = {
   title: "The Living Record",
