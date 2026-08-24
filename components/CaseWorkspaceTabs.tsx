@@ -15,6 +15,27 @@ const tabs: Array<{ id: TabKey; label: string }> = [
   { id: "sources", label: "Sources" }
 ];
 
+const keshiaSupportResources = [
+  {
+    title: "Illinois Domestic Violence Prevention and Intervention",
+    publisher: "Illinois Department of Human Services",
+    url: "https://www.dhs.state.il.us/page.aspx?item=30275",
+    note: "Official Illinois resource for safety assistance, shelter, counseling, safety planning, legal advocacy, children's services, temporary food and housing, and local service-provider referrals."
+  },
+  {
+    title: "Emergency Order of Protection — Cook County",
+    publisher: "Illinois Legal Aid Online",
+    url: "https://www.illinoislegalaid.org/legal-information/emergency-order-protection-cook-county",
+    note: "Free guided legal information and forms for seeking an emergency order of protection in Cook County."
+  },
+  {
+    title: "National Domestic Violence Hotline",
+    publisher: "The Hotline",
+    url: "https://www.thehotline.org/",
+    note: "Confidential survivor support, safety-planning tools, live advocacy, legal-help information, and local-provider referrals."
+  }
+];
+
 export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -82,6 +103,41 @@ export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
                 </article>
               ))}
             </div>
+
+            {item.slug === "keshia-golden" ? (
+              <>
+                <article className="workspaceCard keshiaAdvocacyCard">
+                  <p className="eyebrow">Editorial advocacy · separate from the evidentiary record</p>
+                  <h2>This should never have taken nearly four years to reach a non-custodial resolution.</h2>
+                  <p>
+                    Hope Records believes the reported domestic-violence history and the circumstances surrounding Keshia Golden's case should have been treated as central far earlier. The Aug. 24 plea ends the immediate risk of a first-degree murder trial and incarceration, but it does not erase the years spent under that charge or the continuing consequences of a felony conviction.
+                  </p>
+                  <p>
+                    <strong>Our editorial position:</strong> Keshia Golden should be able to seek executive clemency from Illinois Gov. J.B. Pritzker. We support a petition for a pardon and, if legally appropriate, authorization to pursue expungement. This is an advocacy position — not a court finding — and it remains visibly separate from the verified record above.
+                  </p>
+                  <div className="advocacyLinkRow">
+                    <a href="https://ilga.gov/legislation/ILCS/details?ActID=1999&ActName=Unified+Code+of+Corrections.&ChapAct=730%20ILCS%205/&Chapter=&ChapterID=55&MajorTopic=&SeqEnd=24500000&SeqStart=500000" target="_blank" rel="noreferrer">Illinois clemency law ↗</a>
+                    <a href="https://www.illinoislegalaid.org/legal-information/filing-petition-executive-clemency" target="_blank" rel="noreferrer">How to seek executive clemency ↗</a>
+                  </div>
+                </article>
+
+                <article className="workspaceCard survivorResourcesCard">
+                  <p className="eyebrow">Domestic-violence resources</p>
+                  <h2>If Keshia's story feels familiar, support exists beyond this case file.</h2>
+                  <p className="tabLead">These links are provided for safety planning, survivor services, legal information, and local referrals. They are separate from the investigative source trail.</p>
+                  <div className="survivorResourceGrid">
+                    {keshiaSupportResources.map((resource) => (
+                      <a className="survivorResourceLink" href={resource.url} target="_blank" rel="noreferrer" key={resource.url}>
+                        <span>{resource.publisher}</span>
+                        <strong>{resource.title}</strong>
+                        <small>{resource.note}</small>
+                        <b aria-hidden="true">Open resource ↗</b>
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              </>
+            ) : null}
 
             <article className="workspaceCard publicationCaution compactPromiseCard">
               <p className="eyebrow">Editorial promise</p>
