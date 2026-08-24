@@ -1,10 +1,10 @@
 export function Logo() {
   return (
-    <div className="brand" aria-label="The Living Record">
+    <div className="brand" aria-label="Hope Record">
       <span className="brandMark" aria-hidden="true">⌁</span>
       <span className="brandWords">
-        <small>The</small>
-        <strong>Living Record</strong>
+        <small>Hope</small>
+        <strong>Record</strong>
       </span>
     </div>
   );
