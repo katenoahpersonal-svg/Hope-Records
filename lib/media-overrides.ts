@@ -14,8 +14,8 @@ const gallerySheets: Record<string, GallerySheetSpec> = {
   "nolan-wells": {
     sheet: caseMedia.nolanGallery,
     count: 6,
-    columns: 3,
-    rows: 2,
+    columns: 2,
+    rows: 3,
     altPrefix: "Nolan Xavier Wells photo"
   },
   "latarsha-sanders": {
