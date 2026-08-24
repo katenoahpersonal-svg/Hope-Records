@@ -1,14 +1,7 @@
 import type { CaseRecord } from "./types";
+import { latarshaEmbeddedImages } from "./latarsha-embedded";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-const asset = (path: string) => `${basePath}${path}`;
-
-const latarshaImages = [
-  asset("/cases/latarsha-sanders/01-green-portrait.jpg"),
-  asset("/cases/latarsha-sanders/02-family-group.webp"),
-  asset("/cases/latarsha-sanders/03-children.webp"),
-  asset("/cases/latarsha-sanders/04-stroller.jpg"),
-];
+const latarshaImages = [...latarshaEmbeddedImages];
 
 export function applyCaseMediaOverrides(item: CaseRecord): CaseRecord {
   if (item.slug !== "latarsha-sanders") return item;
@@ -16,7 +9,7 @@ export function applyCaseMediaOverrides(item: CaseRecord): CaseRecord {
   return {
     ...item,
     heroImage: latarshaImages[0],
-    galleryImage: latarshaImages[1],
+    galleryImage: latarshaImages[0],
     imageNote: "Photo archive",
   };
 }
