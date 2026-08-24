@@ -125,42 +125,30 @@ export function CaseWorkspaceTabs({ item }: { item: CaseRecord }) {
               <div>
                 <p className="eyebrow">Photo archive</p>
                 <h2>Remembering the people at the center of the record</h2>
+                <p className="tabLead">The complete photo set is preserved intact here so no photograph is distorted, over-cropped, or hidden.</p>
               </div>
               <span className="photoCount">{gallerySheet ? `${gallerySheet.count} photographs` : `${galleryImages.length} photographs`}</span>
             </div>
 
             {gallerySheet ? (
-              <div className={`casePhotoGrid splitPhotoGrid splitPhotoGrid-${gallerySheet.count}`}>
-                {Array.from({ length: gallerySheet.count }, (_, index) => {
-                  const column = index % gallerySheet.columns;
-                  const row = Math.floor(index / gallerySheet.columns);
-                  const x = gallerySheet.columns === 1 ? 0 : (column / (gallerySheet.columns - 1)) * 100;
-                  const y = gallerySheet.rows === 1 ? 0 : (row / (gallerySheet.rows - 1)) * 100;
-
-                  return (
-                    <div
-                      className="casePhotoCrop"
-                      key={`${item.slug}-photo-${index + 1}`}
-                      role="img"
-                      aria-label={`${gallerySheet.altPrefix} ${index + 1}`}
-                      style={{
-                        backgroundImage: `url(${gallerySheet.sheet})`,
-                        backgroundSize: `${gallerySheet.columns * 100}% ${gallerySheet.rows * 100}%`,
-                        backgroundPosition: `${x}% ${y}%`
-                      }}
-                    />
-                  );
-                })}
+              <div className="contactSheetFrame">
+                <img
+                  className="contactSheetImage"
+                  src={gallerySheet.sheet}
+                  alt={`${item.name} complete ${gallerySheet.count}-photograph collection`}
+                />
               </div>
             ) : (
-              <div className="casePhotoGrid">
+              <div className="casePhotoGrid realPhotoGrid">
                 {galleryImages.map((src, index) => (
-                  <img
-                    className={index === 0 ? "casePhotoTile leadPhotoTile" : "casePhotoTile archivePhotoTile"}
-                    src={src}
-                    alt={`${item.name} photo ${index + 1}`}
-                    key={`${src}-${index}`}
-                  />
+                  <figure className="casePhotoFigure" key={`${src}-${index}`}>
+                    <img
+                      className="casePhotoTile"
+                      src={src}
+                      alt={`${item.name} photo ${index + 1}`}
+                      loading={index > 1 ? "lazy" : "eager"}
+                    />
+                  </figure>
                 ))}
               </div>
             )}
