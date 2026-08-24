@@ -10,8 +10,9 @@ export function Header() {
         <Link href="/share">Share Your Story</Link>
         <Link href="/#investigations">Investigations</Link>
         <Link href="/vault">Document Vault</Link>
+        <Link href="/contact">Contact</Link>
       </nav>
-      <button className="signInButton" type="button">Researcher Sign In</button>
+      <Link className="signInButton" href="/contact#researcher-access">Researcher Access</Link>
     </header>
   );
 }
