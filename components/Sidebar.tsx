@@ -22,7 +22,7 @@ export function Sidebar() {
       <blockquote>
         <span className="quoteMark">“</span>
         <p>Justice is not a moment. It is a record we build together.</p>
-        <footer>— The Living Record</footer>
+        <footer>— Hope Record</footer>
       </blockquote>
     </aside>
   );
