@@ -23,12 +23,12 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
     <main className="appShell">
       <Header />
       <div className="casePage researchedCasePage compactResearchedCasePage">
-        <Link className="backLink compactBackLink" href="/">← Back to The Living Record</Link>
+        <Link className="backLink compactBackLink" href="/">← Back to Hope Record</Link>
 
         <header className="caseHero caseHeroWithMedia compactCaseHero">
           <div>
             <span className="caseStatus">{item.status}</span>
-            <p className="eyebrow caseFileEyebrow">Living record · evidence review Aug. 24, 2026</p>
+            <p className="eyebrow caseFileEyebrow">Hope Record case file · evidence review Aug. 24, 2026</p>
             <h1>{item.name}</h1>
             <p className="caseLocationLine">{item.location} · {item.dateLabel}</p>
             <p className="caseHeroSummary">{item.summary}</p>
