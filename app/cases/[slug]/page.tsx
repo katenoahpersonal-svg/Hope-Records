@@ -4,6 +4,7 @@ import { Header } from "@/components/Header";
 import { CaseWorkspaceTabs } from "@/components/CaseWorkspaceTabs";
 import { cases } from "@/lib/mock-data";
 import { applyEditorialOverrides } from "@/lib/editorial-overrides";
+import { applyCurrentCaseUpdates } from "@/lib/current-updates";
 import { applyCaseMediaOverrides } from "@/lib/media-overrides";
 
 export function generateStaticParams() {
@@ -16,7 +17,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const baseItem = cases.find((entry) => entry.slug === slug);
   if (!baseItem) notFound();
-  const item = applyCaseMediaOverrides(applyEditorialOverrides(baseItem));
+  const item = applyCaseMediaOverrides(applyCurrentCaseUpdates(applyEditorialOverrides(baseItem)));
 
   return (
     <main className="appShell">
@@ -27,7 +28,7 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
         <header className="caseHero caseHeroWithMedia compactCaseHero">
           <div>
             <span className="caseStatus">{item.status}</span>
-            <p className="eyebrow caseFileEyebrow">Living record · evidence review Aug. 23, 2026</p>
+            <p className="eyebrow caseFileEyebrow">Living record · evidence review Aug. 24, 2026</p>
             <h1>{item.name}</h1>
             <p className="caseLocationLine">{item.location} · {item.dateLabel}</p>
             <p className="caseHeroSummary">{item.summary}</p>
