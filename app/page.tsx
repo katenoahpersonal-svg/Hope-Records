@@ -20,12 +20,12 @@ export default function HomePage() {
         <div className="mainColumn">
           <section className="hero">
             <div className="heroCopy">
-              <p className="eyebrow">Public-interest archive</p>
+              <p className="eyebrow">Hope Record · public-interest archive</p>
               <h1>A record is not the end.<br />It’s the beginning of understanding.</h1>
             </div>
             <label className="searchBox">
               <span aria-hidden="true">⌕</span>
-              <input aria-label="Search the record" placeholder="Search a person, case, place, institution, or document" />
+              <input aria-label="Search Hope Record" placeholder="Search a person, case, place, institution, or document" />
             </label>
             <ExploreMap />
             <p className="missionLine">Every story deserves a record. Every record deserves context.</p>
@@ -37,7 +37,7 @@ export default function HomePage() {
                 <p className="eyebrow">Featured records · evidence review Aug. 24, 2026</p>
                 <h2>Nolan Wells · Latarsha Sanders · Keshia Golden</h2>
               </div>
-              <Link href="/#investigations">Three living records →</Link>
+              <Link href="/#investigations">Three featured records →</Link>
             </div>
             <p className="priorityIntro">Three people, three families, three records deserving care. We begin with primary documents and direct voices, separate what is known from what is disputed, and leave room for unanswered questions without turning uncertainty into accusation.</p>
             <div className="caseGrid priorityCaseGrid">
