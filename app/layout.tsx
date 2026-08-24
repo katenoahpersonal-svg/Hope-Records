@@ -4,6 +4,7 @@ import "./priority.css";
 import "./compact.css";
 import "./gallery.css";
 import "./keshia.css";
+import "./intake.css";
 
 export const metadata: Metadata = {
   title: "The Living Record",
