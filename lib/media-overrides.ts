@@ -1,45 +1,40 @@
 import type { CaseRecord } from "./types";
-import { caseMedia } from "./media";
-import { latarshaEmbeddedImages } from "./latarsha-embedded";
 
-export interface GallerySheetSpec {
-  sheet: string;
-  count: number;
-  columns: number;
-  rows: number;
-  altPrefix: string;
-}
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const asset = (filename: string) => `${basePath}/${filename}`;
 
-const gallerySheets: Record<string, GallerySheetSpec> = {
-  "nolan-wells": {
-    sheet: caseMedia.nolanGallery,
-    count: 6,
-    columns: 2,
-    rows: 3,
-    altPrefix: "Nolan Xavier Wells photo"
-  },
-  "latarsha-sanders": {
-    sheet: caseMedia.latarshaGallery,
-    count: 4,
-    columns: 2,
-    rows: 2,
-    altPrefix: "Latarsha Sanders family photo"
-  },
-  "keshia-golden": {
-    sheet: caseMedia.keshiaGallery,
-    count: 4,
-    columns: 2,
-    rows: 2,
-    altPrefix: "Keshia Golden family photo"
-  }
+const caseGalleries: Record<string, string[]> = {
+  "nolan-wells": [
+    asset("nolan-01.jpg"),
+    asset("nolan-02.jpg"),
+    asset("nolan-03.jpg"),
+    asset("nolan-04.jpg"),
+    asset("nolan-05.jpg"),
+    asset("nolan-06.jpg")
+  ],
+  "latarsha-sanders": [
+    asset("latarsha-01.jpg"),
+    asset("latarsha-02.jpg"),
+    asset("latarsha-03.jpg"),
+    asset("latarsha-04.jpg")
+  ],
+  "keshia-golden": [
+    asset("keshia-01.jpg"),
+    asset("keshia-02.jpg"),
+    asset("keshia-03.jpg"),
+    asset("keshia-04.jpg")
+  ]
 };
 
 export function applyCaseMediaOverrides(item: CaseRecord): CaseRecord {
+  const gallery = caseGalleries[item.slug];
+  if (!gallery) return item;
+
   if (item.slug === "latarsha-sanders") {
     return {
       ...item,
-      heroImage: latarshaEmbeddedImages[0],
-      galleryImage: caseMedia.latarshaGallery,
+      heroImage: asset("latarsha-01.jpg"),
+      galleryImage: gallery[0],
       imageNote: "4 photographs"
     };
   }
@@ -47,8 +42,8 @@ export function applyCaseMediaOverrides(item: CaseRecord): CaseRecord {
   if (item.slug === "nolan-wells") {
     return {
       ...item,
-      heroImage: caseMedia.nolanHero,
-      galleryImage: caseMedia.nolanGallery,
+      heroImage: asset("nolan-06.jpg"),
+      galleryImage: gallery[0],
       imageNote: "6 photographs"
     };
   }
@@ -56,8 +51,8 @@ export function applyCaseMediaOverrides(item: CaseRecord): CaseRecord {
   if (item.slug === "keshia-golden") {
     return {
       ...item,
-      heroImage: caseMedia.keshiaHero,
-      galleryImage: caseMedia.keshiaGallery,
+      heroImage: asset("keshia-01.jpg"),
+      galleryImage: gallery[0],
       imageNote: "4 photographs"
     };
   }
@@ -65,10 +60,6 @@ export function applyCaseMediaOverrides(item: CaseRecord): CaseRecord {
   return item;
 }
 
-export function getCaseGallerySheet(item: CaseRecord): GallerySheetSpec | null {
-  return gallerySheets[item.slug] ?? null;
-}
-
 export function getCaseGalleryImages(item: CaseRecord): string[] {
-  return Array.from(new Set([item.heroImage, item.galleryImage].filter(Boolean)));
+  return caseGalleries[item.slug] ?? Array.from(new Set([item.heroImage, item.galleryImage].filter(Boolean)));
 }
