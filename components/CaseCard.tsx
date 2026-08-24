@@ -1,10 +1,11 @@
 import Link from "next/link";
 import type { CaseRecord } from "@/lib/types";
 import { applyEditorialOverrides } from "@/lib/editorial-overrides";
+import { applyCurrentCaseUpdates } from "@/lib/current-updates";
 import { applyCaseMediaOverrides } from "@/lib/media-overrides";
 
 export function CaseCard({ item }: { item: CaseRecord }) {
-  const displayItem = applyCaseMediaOverrides(applyEditorialOverrides(item));
+  const displayItem = applyCaseMediaOverrides(applyCurrentCaseUpdates(applyEditorialOverrides(item)));
 
   return (
     <article className="caseCard priorityCard">
