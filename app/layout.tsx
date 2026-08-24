@@ -3,6 +3,7 @@ import "./globals.css";
 import "./priority.css";
 import "./compact.css";
 import "./gallery.css";
+import "./keshia.css";
 
 export const metadata: Metadata = {
   title: "The Living Record",
