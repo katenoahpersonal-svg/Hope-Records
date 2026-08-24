@@ -34,7 +34,7 @@ export default function HomePage() {
           <section className="contentSection prioritySection" id="investigations">
             <div className="sectionHeading priorityHeading">
               <div>
-                <p className="eyebrow">Featured records · evidence review Aug. 23, 2026</p>
+                <p className="eyebrow">Featured records · evidence review Aug. 24, 2026</p>
                 <h2>Nolan Wells · Latarsha Sanders · Keshia Golden</h2>
               </div>
               <Link href="/#investigations">Three living records →</Link>
