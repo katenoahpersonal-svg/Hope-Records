@@ -9,6 +9,7 @@ import "./brand.css";
 import "./brand-case.css";
 import "./simplify.css";
 import "./home-fixes.css";
+import "./tighten.css";
 
 export const metadata: Metadata = {
   title: "Hope Record",
