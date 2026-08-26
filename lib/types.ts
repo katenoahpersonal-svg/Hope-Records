@@ -68,4 +68,6 @@ export interface DocumentRecord {
   relatedCase: string;
   status: EvidenceStatus[];
   url?: string;
+  /** Optional literal first-page scan or screenshot. Generated archival covers are used when absent. */
+  coverImage?: string;
 }
