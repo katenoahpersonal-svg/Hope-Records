@@ -1,0 +1,192 @@
+/* Hope Record — focused polish pass */
+
+/* Masthead: wordmark only */
+.brandTextOnly .brandWords { display: block !important; }
+.brandTextOnly .brandWords strong { display: block; }
+.brandTextOnly .brandWords small { display: none !important; }
+.logoLink { align-self: center; }
+
+/* Homepage cards */
+.casePortraitFlag { display: none !important; }
+.editorialRibbon {
+  display: grid !important;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  gap: 18px !important;
+  padding: 12px 15px !important;
+}
+.editorialRibbon strong { white-space: nowrap; }
+.editorialRibbon span { font-size: 11px; line-height: 1.45; }
+
+/* Calm document-card interaction: no tilt */
+.documentCard {
+  position: relative;
+  transform: none !important;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease !important;
+}
+.documentCard::before {
+  content: "";
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brand-brass);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform .24s ease;
+}
+.documentCard:hover {
+  transform: translateY(-1px) !important;
+  border-color: #c4ad86 !important;
+  box-shadow: 0 12px 26px rgba(13,24,42,.08) !important;
+}
+.documentCard:hover::before { transform: scaleX(1); }
+.documentPaper,
+.documentCard:hover .documentPaper {
+  transform: none !important;
+  transition: box-shadow .22s ease, opacity .22s ease !important;
+}
+.documentCard:hover .documentPaper {
+  box-shadow: 0 12px 24px rgba(44,35,28,.2) !important;
+}
+.documentSourceLink { transition: letter-spacing .2s ease; }
+.documentCard:hover .documentSourceLink { letter-spacing: .02em; }
+
+/* Investigations */
+.investigationsPage { max-width: 1180px !important; }
+.investigationsGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+.investigationsGrid .caseCard { height: 100%; }
+
+/* Topic pages */
+.topicPage { max-width: 1180px !important; }
+.topicSection { margin-top: 28px; }
+.topicSectionHeading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px;
+  margin-bottom: 12px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--line);
+}
+.topicSectionHeading h2 {
+  margin: 0;
+  font: 500 clamp(22px, 2.5vw, 30px)/1.1 "Iowan Old Style", Baskerville, Georgia, serif;
+}
+.topicSectionHeading a,
+.secondaryTextLink {
+  color: var(--brand-plum);
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+.topicCaseGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.topicDocumentGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.topicEmptyState {
+  max-width: 720px;
+  margin-top: 24px;
+  padding: 18px 20px;
+  border: 1px solid #d9cfbe;
+  border-left: 3px solid var(--brand-brass);
+  background: #fffdf8;
+  color: #605b54;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.topicEmptyState p { margin: 0; }
+.topicActionRow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+/* Contact: make the form read in a clean order */
+.generalContactSection { max-width: 100%; }
+.polishedContactForm {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px 14px !important;
+}
+.polishedContactForm .contactFormWarning {
+  grid-column: 1 / -1 !important;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 10px 12px !important;
+  border-radius: 4px !important;
+  border: 1px solid #ddd2c1 !important;
+  background: #f7f1e7 !important;
+}
+.polishedContactForm .contactFormWarning strong { white-space: nowrap; }
+.polishedContactForm .contactFormWarning p {
+  margin: 0 !important;
+  font-size: 10px;
+  color: #6a6258;
+}
+.polishedContactForm label { gap: 5px !important; }
+.polishedContactForm input,
+.polishedContactForm select,
+.polishedContactForm textarea {
+  border-radius: 5px !important;
+  padding: 10px 11px !important;
+  background: #fffefb !important;
+}
+.contactSubmitRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 3px;
+}
+.contactSubmitRow > span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.contactSubmitRow .primaryButton { flex: 0 0 auto; }
+
+/* Topic links feel navigational, not like giant controls */
+.topic {
+  transition: border-color .18s ease, background .18s ease !important;
+}
+.topic:hover {
+  transform: none !important;
+  background: #fffdf8 !important;
+}
+.topic b { transition: transform .18s ease; }
+.topic:hover b { transform: translateX(3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .documentCard,
+  .documentCard::before,
+  .documentPaper,
+  .documentSourceLink,
+  .topic,
+  .topic b { transition: none !important; }
+}
+
+@media (max-width: 1000px) {
+  .investigationsGrid,
+  .topicCaseGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .topicDocumentGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .editorialRibbon { grid-template-columns: 1fr; gap: 5px !important; }
+  .editorialRibbon strong { white-space: normal; }
+  .investigationsGrid,
+  .topicCaseGrid,
+  .topicDocumentGrid,
+  .polishedContactForm { grid-template-columns: 1fr !important; }
+  .polishedContactForm .contactFormWarning { display: grid; gap: 3px; }
+  .polishedContactForm .fullField { grid-column: auto !important; }
+  .contactSubmitRow { align-items: stretch; flex-direction: column; }
+  .contactSubmitRow .primaryButton { width: 100%; }
+  .topicActionRow { align-items: flex-start; flex-direction: column; }
+  .topicSectionHeading { align-items: flex-start; flex-direction: column; }
+}
