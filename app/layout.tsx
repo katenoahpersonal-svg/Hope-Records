@@ -6,6 +6,7 @@ import "./gallery.css";
 import "./keshia.css";
 import "./intake.css";
 import "./brand.css";
+import "./brand-case.css";
 
 export const metadata: Metadata = {
   title: "Hope Record",
