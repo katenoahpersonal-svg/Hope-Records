@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const topics = [
-  ["Unresolved Cases", "/#investigations"],
-  ["Missing Persons", "/#investigations"],
-  ["Questioned Findings", "/#investigations"],
-  ["Survivor Accounts", "/share?type=my-story"],
-  ["Historical Records", "/vault"],
-  ["Family Oral Histories", "/share?type=family-history"],
+  ["Unresolved Cases", "/topics/unresolved-cases"],
+  ["Missing Persons", "/topics/missing-persons"],
+  ["Questioned Findings", "/topics/questioned-findings"],
+  ["Survivor Accounts", "/topics/survivor-accounts"],
+  ["Historical Records", "/topics/historical-records"],
+  ["Family Oral Histories", "/topics/family-oral-histories"],
 ];
 
 export function Sidebar() {
