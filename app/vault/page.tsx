@@ -7,12 +7,12 @@ export default function VaultPage() {
   return (
     <main className="appShell">
       <Header />
-      <div className="innerPage">
+      <div className="innerPage compactInnerPage vaultPage">
         <Link className="backLink" href="/">← Back home</Link>
         <p className="eyebrow">Verified record vault</p>
-        <h1>Records should be traceable.</h1>
-        <p className="pageLead">Primary court and government records come first. When the underlying document is not publicly available, the record says so rather than pretending a news story is the document itself.</p>
-        <div className="documentGrid documentGridWide">
+        <h1>Trace the record.</h1>
+        <p className="pageLead">Primary court and government records come first. When an underlying document is not public yet, the archive says so.</p>
+        <div className="documentGrid documentGridWide compactVaultGrid">
           {verifiedDocuments.map((item) => <DocumentCard item={item} key={item.id} />)}
         </div>
       </div>
