@@ -1,0 +1,108 @@
+/* Hope Record — focused homepage corrections */
+
+/* Header / logo */
+.siteHeader {
+  grid-template-columns: 320px minmax(0, 1fr) auto;
+}
+.brand {
+  gap: 12px;
+}
+.brandSeal {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 54px;
+  display: block;
+}
+.brandWords strong {
+  font-size: 24px;
+  letter-spacing: .045em;
+}
+.brandWords small {
+  margin-top: 2px;
+  font-size: 7.5px;
+  letter-spacing: .14em;
+}
+
+/* One-line editorial hero */
+.hero {
+  padding: 24px 34px 0;
+}
+.heroCopy {
+  width: min(1040px, 92%);
+  max-width: none;
+  margin: 0 auto 20px;
+}
+.heroCopy .eyebrow {
+  margin-bottom: 10px;
+}
+.hero h1 {
+  max-width: none;
+  margin: 0;
+  font-size: clamp(30px, 3.45vw, 48px);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Keep the US map at its real aspect ratio and inside its section */
+.mapPanel.usMapPanel {
+  height: auto !important;
+  min-height: 0;
+  overflow: hidden;
+  padding: 22px 34px 16px;
+}
+.usMapHeading,
+.usMapLegend {
+  width: min(900px, 92%);
+}
+.usMapCanvas {
+  width: min(860px, 90%);
+  aspect-ratio: 959 / 593;
+  margin: 8px auto 0;
+}
+.usMapImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.missionLine {
+  position: relative;
+  z-index: 2;
+}
+
+@media (max-width: 1180px) {
+  .siteHeader {
+    grid-template-columns: 285px minmax(0, 1fr) auto;
+  }
+  .brandSeal {
+    width: 50px;
+    height: 50px;
+    flex-basis: 50px;
+  }
+  .brandWords strong { font-size: 21px; }
+  .desktopNav { gap: 20px; }
+}
+
+@media (max-width: 900px) {
+  .hero h1 {
+    white-space: normal;
+    font-size: clamp(32px, 6vw, 46px);
+  }
+  .usMapCanvas,
+  .usMapHeading,
+  .usMapLegend {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 24px 20px 0;
+  }
+  .heroCopy {
+    width: 100%;
+  }
+  .mapPanel.usMapPanel {
+    padding: 20px 18px 14px;
+  }
+}
