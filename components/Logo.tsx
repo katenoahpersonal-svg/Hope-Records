@@ -1,13 +1,26 @@
 export function Logo() {
   return (
     <div className="brand" aria-label="Hope Record">
-      <svg className="brandSeal" viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="32" r="29" fill="#0D182A" stroke="#C7A46A" strokeWidth="1.6" />
-        <circle cx="32" cy="32" r="25" fill="none" stroke="#F4EFE6" strokeWidth="0.8" opacity="0.85" />
-        <path d="M32 9l2.1 6.8 6.8 2.1-6.8 2.1-2.1 6.8-2.1-6.8-6.8-2.1 6.8-2.1z" fill="#C7A46A" />
-        <path d="M18 30h11l2.7 3H46v14H18z" fill="#EEE6D6" stroke="#C7A46A" strokeWidth="1.1" />
-        <path d="M23 38h18M23 42h13" stroke="#32465A" strokeWidth="1.4" strokeLinecap="round" />
-        <path d="M15 46c-4.3-4.2-6.4-9-6.5-14M49 46c4.3-4.2 6.4-9 6.5-14" fill="none" stroke="#C7A46A" strokeWidth="1.15" strokeLinecap="round" />
+      <svg className="brandSeal" viewBox="0 0 72 72" aria-hidden="true">
+        <circle cx="36" cy="36" r="32" fill="#0D182A" stroke="#C7A46A" strokeWidth="1.8" />
+        <circle cx="36" cy="36" r="27" fill="none" stroke="#F4EFE6" strokeWidth="0.9" opacity="0.88" />
+
+        <path
+          d="M36 12.5l1.8 5.7 5.7 1.8-5.7 1.8-1.8 5.7-1.8-5.7-5.7-1.8 5.7-1.8z"
+          fill="#C7A46A"
+        />
+
+        <path
+          d="M19.5 33.5h11.8l3.7 3.7h17.5v15.3h-33z"
+          fill="none"
+          stroke="#F4EFE6"
+          strokeWidth="2"
+          strokeLinejoin="round"
+        />
+        <path d="M19.5 38h33" stroke="#C7A46A" strokeWidth="1.2" />
+
+        <rect x="27" y="39.5" width="18" height="9.5" rx="1.2" fill="#F4EFE6" />
+        <path d="M30.5 42.5h11M30.5 45.5h8" stroke="#32465A" strokeWidth="1.2" strokeLinecap="round" />
       </svg>
       <span className="brandWords">
         <strong>Hope Record</strong>
