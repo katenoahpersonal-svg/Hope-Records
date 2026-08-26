@@ -94,6 +94,150 @@
   font-weight: 850;
 }
 
+/* archival document covers */
+.documentCard {
+  padding: 0 !important;
+  overflow: hidden;
+  background: #fffdf8;
+}
+.documentCardCopy { padding: 13px 14px 15px; }
+.documentCover {
+  position: relative;
+  height: 176px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-bottom: 1px solid #d8cebd;
+  background: #e8e1d5;
+}
+.documentCoverImage img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+.documentCoverGenerated {
+  background:
+    radial-gradient(circle at 24% 20%, rgba(255,255,255,.6), transparent 26%),
+    linear-gradient(145deg, #d8d0c3, #eee8df 55%, #d3c9bb);
+}
+.documentCoverGenerated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .18;
+  background-image: repeating-linear-gradient(0deg, rgba(58,47,38,.08) 0 1px, transparent 1px 4px);
+  mix-blend-mode: multiply;
+}
+.documentPaper {
+  width: 76%;
+  height: 148px;
+  position: relative;
+  z-index: 1;
+  padding: 12px 12px 10px;
+  overflow: hidden;
+  background: #fffef9;
+  border: 1px solid rgba(96,79,61,.28);
+  box-shadow: 0 10px 22px rgba(44,35,28,.17);
+  transform: rotate(-.75deg);
+  color: #342f2a;
+}
+.documentCoverCourt .documentPaper { border-top: 4px solid #17283d; }
+.documentCoverFiled .documentPaper { border-top: 4px solid #a37d43; }
+.documentCoverForensic .documentPaper { border-top: 4px solid #5d4058; }
+.documentCoverOfficial .documentPaper { border-top: 4px solid #465d6d; }
+.documentCoverArchive .documentPaper { border-top: 4px solid #766755; }
+.documentPaperTopline {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 5.6px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: .055em;
+  color: #635c53;
+}
+.documentPaperTopline span {
+  max-width: 72%;
+  font-weight: 750;
+}
+.documentPaperTopline b {
+  white-space: nowrap;
+  font-weight: 600;
+}
+.documentPaperRule {
+  height: 1px;
+  margin: 7px 0 7px;
+  background: #958a7c;
+  opacity: .45;
+}
+.documentPaperType {
+  display: inline-block;
+  margin-bottom: 5px;
+  font-size: 5.2px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  color: #735c3c;
+}
+.documentPaper h4 {
+  max-height: 31px;
+  overflow: hidden;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 8px;
+  line-height: 1.28;
+  font-weight: 700;
+}
+.documentPaper > p {
+  margin: 5px 0 0;
+  font-size: 5.8px;
+  font-weight: 700;
+  color: #716a61;
+}
+.documentPaperLines { margin-top: 8px; }
+.documentPaperLines i {
+  display: block;
+  height: 1px;
+  margin: 4px 0;
+  background: #9c9489;
+  opacity: .42;
+}
+.documentPaperLines i:nth-child(2) { width: 88%; }
+.documentPaperLines i:nth-child(3) { width: 95%; }
+.documentPaperLines i:nth-child(4) { width: 72%; }
+.documentPaperLines i:nth-child(5) { width: 90%; }
+.documentPaperFooter {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #807568;
+}
+.documentPaperFooter span {
+  font-size: 4.8px;
+  font-weight: 800;
+  letter-spacing: .11em;
+}
+.documentPaperFooter b {
+  width: 21px;
+  height: 21px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #9c8460;
+  border-radius: 50%;
+  font-family: Georgia, serif;
+  font-size: 6px;
+  color: #7e6748;
+}
+.documentCard:hover .documentPaper { transform: rotate(0deg) translateY(-2px); }
+.documentPaper { transition: transform .18s ease; }
+
 /* make the relationship row genuinely useful but visually quiet */
 .graphNodes {
   display: grid;
@@ -166,6 +310,8 @@
   .contentSection,
   .recordGraph { padding: 24px 20px; }
   .graphNodes { grid-template-columns: 1fr 1fr; }
+  .documentCover { height: 158px; }
+  .documentPaper { height: 133px; }
 }
 
 @media (max-width: 470px) {
