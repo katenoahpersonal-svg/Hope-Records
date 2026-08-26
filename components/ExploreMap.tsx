@@ -29,13 +29,13 @@ const caseLocations = [
 
 export function ExploreMap() {
   return (
-    <section className="mapPanel usMapPanel" aria-label="United States map of featured records">
+    <section id="map" className="mapPanel usMapPanel" aria-label="United States map of featured records">
       <div className="usMapHeading">
         <div>
           <span>Explore by place</span>
-          <strong>Where these living records are unfolding</strong>
+          <strong>Where these records are unfolding</strong>
         </div>
-        <small>Select a dot to open the record.</small>
+        <small>Select a location to open the record.</small>
       </div>
 
       <div className="usMapCanvas">
