@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 const nodes = [
-  ["▤", "RECORD", "Documents and files"],
-  ["◎", "PEOPLE", "Individuals and communities"],
-  ["⌖", "LOCATION", "Places that matter"],
-  ["□", "EVENT", "What happened and when"],
-  ["⚖", "IMPACT", "Ongoing effects and accountability"]
+  ["RECORD", "Documents and files", "/vault"],
+  ["PEOPLE", "Individuals and communities", "/#investigations"],
+  ["LOCATION", "Places that matter", "/#map"],
+  ["EVENT", "What happened and when", "/#investigations"],
+  ["IMPACT", "Ongoing effects and accountability", "/share?type=overlooked"]
 ];
 
 export function RecordGraph() {
@@ -12,13 +14,13 @@ export function RecordGraph() {
       <p className="eyebrow">How the record connects</p>
       <p className="graphIntro">Cases are built from records, people, locations, events, and claims.</p>
       <div className="graphNodes">
-        {nodes.map(([icon, label, description], index) => (
+        {nodes.map(([label, description, href], index) => (
           <div className="graphNodeWrap" key={label}>
-            <div className="graphNode">
-              <span className="graphIcon" aria-hidden="true">{icon}</span>
+            <Link className="graphNode graphNodeLink" href={href}>
               <strong>{label}</strong>
               <small>{description}</small>
-            </div>
+              <span aria-hidden="true">Open →</span>
+            </Link>
             {index < nodes.length - 1 && <span className="graphConnector" aria-hidden="true">→</span>}
           </div>
         ))}
