@@ -21,14 +21,14 @@ export default function HomePage() {
           <section className="hero">
             <div className="heroCopy">
               <p className="eyebrow">Hope Record · public-interest archive</p>
-              <h1>A record is not the end.<br />It’s the beginning of understanding.</h1>
+              <h1>We preserve what matters.<br />We reveal what’s true.<br />We serve the public good.</h1>
             </div>
             <label className="searchBox">
               <span aria-hidden="true">⌕</span>
               <input aria-label="Search Hope Record" placeholder="Search a person, case, place, institution, or document" />
             </label>
             <ExploreMap />
-            <p className="missionLine">Every story deserves a record. Every record deserves context.</p>
+            <p className="missionLine">Documenting truth. Protecting dignity. Inspiring change.</p>
           </section>
 
           <section className="contentSection prioritySection" id="investigations">
