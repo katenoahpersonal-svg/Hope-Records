@@ -6,17 +6,17 @@ export default function SharePage() {
   return (
     <main className="appShell">
       <Header />
-      <div className="innerPage sharePage">
+      <div className="innerPage sharePage compactInnerPage">
         <Link className="backLink" href="/">← Back home</Link>
-        <p className="eyebrow">Share your story</p>
+        <p className="eyebrow">Share a record</p>
         <h1>What would you like preserved?</h1>
-        <p className="pageLead">Choose the kind of record you want to share. Identity, contact permission, publication permission, and location precision stay separate so one choice never silently grants another.</p>
+        <p className="pageLead">Choose a submission type. Identity, contact permission, publication permission, and location precision are handled separately.</p>
 
         <ShareIntake />
 
-        <div className="privacyNotice">
+        <div className="privacyNotice compactNotice">
           <strong>Privacy by design</strong>
-          <p>Exact locations, identities, contact information, private testimony, and unpublished uploads should never become public merely because they were submitted. Sensitive intake will remain separate from public case records.</p>
+          <p>Sensitive intake stays separate from public records. Submitting information never automatically grants permission to publish your identity, location, testimony, or files.</p>
         </div>
       </div>
     </main>
