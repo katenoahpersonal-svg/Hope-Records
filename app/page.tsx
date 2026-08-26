@@ -20,8 +20,8 @@ export default function HomePage() {
         <div className="mainColumn">
           <section className="hero">
             <div className="heroCopy">
-              <p className="eyebrow">Hope Record · public-interest archive</p>
-              <h1>We preserve what matters.<br />We reveal what’s true.<br />We serve the public good.</h1>
+              <p className="eyebrow">Public-interest investigative archive</p>
+              <h1>Truth preserved.<br />People protected.</h1>
             </div>
             <label className="searchBox">
               <span aria-hidden="true">⌕</span>
@@ -37,7 +37,7 @@ export default function HomePage() {
                 <p className="eyebrow">Featured records · evidence review Aug. 24, 2026</p>
                 <h2>Nolan Wells · Latarsha Sanders · Keshia Golden</h2>
               </div>
-              <Link href="/#investigations">Three featured records →</Link>
+              <Link href="/#investigations">View featured records →</Link>
             </div>
             <p className="priorityIntro">Three people, three families, three records deserving care. We begin with primary documents and direct voices, separate what is known from what is disputed, and leave room for unanswered questions without turning uncertainty into accusation.</p>
             <div className="caseGrid priorityCaseGrid">
@@ -65,17 +65,17 @@ export default function HomePage() {
               <h2>What would you like preserved?</h2>
               <div className="homeShareOptions">
                 {[
-                  ["My Story", "Share your experience"],
-                  ["Family History", "Preserve your family’s record"],
-                  ["Upload a Document", "Add a verifiable record"],
-                  ["Report a Case", "Bring attention to a case"]
-                ].map(([title, sub]) => (
-                  <Link href="/share" className="shareOption" key={title}>
+                  ["My Story", "Share your experience", "/share?type=my-story"],
+                  ["Family History", "Preserve your family’s record", "/share?type=family-history"],
+                  ["Upload a Document", "Add a verifiable record", "/share?type=document"],
+                  ["Report a Case", "Bring attention to a case", "/share?type=unresolved-case"]
+                ].map(([title, sub, href]) => (
+                  <Link href={href} className="shareOption" key={title}>
                     <span><strong>{title}</strong><small>{sub}</small></span><b>›</b>
                   </Link>
                 ))}
               </div>
-              <Link className="primaryButton" href="/share">Get started</Link>
+              <Link className="primaryButton" href="/share">View all submission options</Link>
             </aside>
           </section>
 
