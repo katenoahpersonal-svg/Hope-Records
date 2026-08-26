@@ -6,22 +6,22 @@ const contactRoutes = [
   {
     title: "Share a private lead",
     body: "Information related to an existing investigation that should not be placed in general email.",
-    href: "/share?type=lead#intake"
+    href: "/share?type=lead"
   },
   {
     title: "Correct a record",
     body: "Flag something we may have missed, misstated, or sourced incompletely.",
-    href: "/share?type=overlooked#intake"
+    href: "/share?type=overlooked"
   },
   {
     title: "Contribute a document",
     body: "Offer a court record, public filing, photograph, archive item, or other source for verification.",
-    href: "/share?type=document#intake"
+    href: "/share?type=document"
   },
   {
     title: "Family or case representative",
     body: "Share context, corrections, records, or a direct connection to a case.",
-    href: "/share?type=unresolved-case#intake"
+    href: "/share?type=unresolved-case"
   }
 ];
 
