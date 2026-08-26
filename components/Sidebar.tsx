@@ -1,10 +1,12 @@
+import Link from "next/link";
+
 const topics = [
-  ["⚖", "Unresolved Cases"],
-  ["○", "Missing Persons"],
-  ["?", "Questioned Findings"],
-  ["□", "Survivor Accounts"],
-  ["▤", "Historical Records"],
-  ["◎", "Family Oral Histories"],
+  ["Unresolved Cases", "/#investigations"],
+  ["Missing Persons", "/#investigations"],
+  ["Questioned Findings", "/#investigations"],
+  ["Survivor Accounts", "/share?type=my-story"],
+  ["Historical Records", "/vault"],
+  ["Family Oral Histories", "/share?type=family-history"],
 ];
 
 export function Sidebar() {
@@ -12,17 +14,15 @@ export function Sidebar() {
     <aside className="sidebar" id="explore">
       <p className="eyebrow">Explore by topic</p>
       <div className="topicList">
-        {topics.map(([icon, label], index) => (
-          <button className={`topic topic-${index + 1}`} key={label} type="button">
-            <span aria-hidden="true">{icon}</span>
-            {label}
-          </button>
+        {topics.map(([label, href], index) => (
+          <Link className={`topic topic-${index + 1}`} key={label} href={href}>
+            <span>{label}</span>
+            <b aria-hidden="true">→</b>
+          </Link>
         ))}
       </div>
       <blockquote>
-        <span className="quoteMark">“</span>
         <p>Justice is not a moment. It is a record we build together.</p>
-        <footer>— Hope Record</footer>
       </blockquote>
     </aside>
   );
