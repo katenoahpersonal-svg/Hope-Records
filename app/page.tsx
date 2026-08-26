@@ -21,7 +21,7 @@ export default function HomePage() {
           <section className="hero">
             <div className="heroCopy">
               <p className="eyebrow">Public-interest investigative archive</p>
-              <h1>Truth preserved.<br />People protected.</h1>
+              <h1>Truth preserved. People protected.</h1>
             </div>
             <ExploreMap />
             <p className="missionLine">Documenting truth. Protecting dignity. Inspiring change.</p>
