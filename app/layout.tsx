@@ -5,10 +5,11 @@ import "./compact.css";
 import "./gallery.css";
 import "./keshia.css";
 import "./intake.css";
+import "./brand.css";
 
 export const metadata: Metadata = {
   title: "Hope Record",
-  description: "Hope Record is a public-interest archive for verified records, testimony, and unanswered questions.",
+  description: "Hope Record is a public-interest archive built to preserve records, protect dignity, and make evidence easier to trace.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
