@@ -23,10 +23,6 @@ export default function HomePage() {
               <p className="eyebrow">Public-interest investigative archive</p>
               <h1>Truth preserved.<br />People protected.</h1>
             </div>
-            <label className="searchBox">
-              <span aria-hidden="true">⌕</span>
-              <input aria-label="Search Hope Record" placeholder="Search a person, case, place, institution, or document" />
-            </label>
             <ExploreMap />
             <p className="missionLine">Documenting truth. Protecting dignity. Inspiring change.</p>
           </section>
@@ -37,7 +33,6 @@ export default function HomePage() {
                 <p className="eyebrow">Featured records · evidence review Aug. 24, 2026</p>
                 <h2>Nolan Wells · Latarsha Sanders · Keshia Golden</h2>
               </div>
-              <Link href="/#investigations">View featured records →</Link>
             </div>
             <p className="priorityIntro">Three people, three families, three records deserving care. We begin with primary documents and direct voices, separate what is known from what is disputed, and leave room for unanswered questions without turning uncertainty into accusation.</p>
             <div className="caseGrid priorityCaseGrid">
