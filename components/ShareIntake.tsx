@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 const intakeKinds = [
   {
@@ -48,7 +48,6 @@ export function ShareIntake() {
   const [identity, setIdentity] = useState("private");
   const [contactPermission, setContactPermission] = useState("no");
   const [publication, setPublication] = useState("review-only");
-  const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const requested = new URLSearchParams(window.location.search).get("type");
@@ -56,13 +55,9 @@ export function ShareIntake() {
     if (match) setSelected(match);
   }, []);
 
-  useEffect(() => {
-    if (selected) requestAnimationFrame(() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
-  }, [selected]);
-
   function choose(kind: IntakeKind) {
     setSelected(kind);
-    window.history.replaceState(null, "", `?type=${kind.id}#intake`);
+    window.history.replaceState(null, "", `?type=${kind.id}`);
   }
 
   function handlePrototypeSubmit(event: FormEvent<HTMLFormElement>) {
@@ -85,7 +80,7 @@ export function ShareIntake() {
       </div>
 
       {selected ? (
-        <div className="secureIntakeWrap" id="intake" ref={formRef}>
+        <div className="secureIntakeWrap" id="intake">
           <div className="intakeHeading">
             <div>
               <p className="eyebrow">Private intake · {selected.title}</p>
