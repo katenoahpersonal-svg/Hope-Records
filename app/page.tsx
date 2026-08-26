@@ -20,7 +20,7 @@ export default function HomePage() {
         <div className="mainColumn">
           <section className="hero">
             <div className="heroCopy">
-              <p className="eyebrow">Public-interest investigative archive</p>
+              <p className="eyebrow">Investigative archive</p>
               <h1>Truth preserved. People protected.</h1>
             </div>
             <ExploreMap />
@@ -33,14 +33,15 @@ export default function HomePage() {
                 <p className="eyebrow">Featured records · evidence review Aug. 24, 2026</p>
                 <h2>Nolan Wells · Latarsha Sanders · Keshia Golden</h2>
               </div>
+              <Link href="/investigations">View investigations →</Link>
             </div>
             <p className="priorityIntro">Three people, three families, three records deserving care. We begin with primary documents and direct voices, separate what is known from what is disputed, and leave room for unanswered questions without turning uncertainty into accusation.</p>
             <div className="caseGrid priorityCaseGrid">
               {featuredCases.map((item) => <CaseCard item={item} key={item.slug} />)}
             </div>
             <div className="editorialRibbon">
-              <strong>Dignity before drama.</strong>
-              <span>Every file begins with a human being, not a theory. Court records and public documents guide the work; family voices are heard directly; uncertainty stays visible; love never requires us to abandon rigor.</span>
+              <strong>People before conclusions.</strong>
+              <span>Every record begins with a person. Primary documents, direct voices, and clearly labeled uncertainty guide the work.</span>
             </div>
           </section>
 
