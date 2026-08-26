@@ -9,7 +9,7 @@ const contactRoutes = [
     href: "/share?type=lead#intake"
   },
   {
-    title: "Correct or challenge a record",
+    title: "Correct a record",
     body: "Flag something we may have missed, misstated, or sourced incompletely.",
     href: "/share?type=overlooked#intake"
   },
@@ -20,7 +20,7 @@ const contactRoutes = [
   },
   {
     title: "Family or case representative",
-    body: "Tell us who you are connected to and what context, correction, or record you want preserved.",
+    body: "Share context, corrections, records, or a direct connection to a case.",
     href: "/share?type=unresolved-case#intake"
   }
 ];
@@ -29,11 +29,11 @@ export default function ContactPage() {
   return (
     <main className="appShell">
       <Header />
-      <div className="innerPage contactPage">
+      <div className="innerPage contactPage compactInnerPage">
         <Link className="backLink" href="/">← Back home</Link>
-        <p className="eyebrow">Contact Hope Records</p>
-        <h1>Use the channel that protects the kind of information you are sharing.</h1>
-        <p className="pageLead">A correction, family message, private lead, and media inquiry should not all travel through the same doorway. Sensitive material routes to private intake; ordinary correspondence stays separate.</p>
+        <p className="eyebrow">Contact</p>
+        <h1>Choose the right channel.</h1>
+        <p className="pageLead">Sensitive material goes through private intake. General questions, media, partnerships, and researcher requests stay separate.</p>
 
         <section className="contactRouteGrid" aria-label="Contact routes">
           {contactRoutes.map((route) => (
@@ -47,17 +47,19 @@ export default function ContactPage() {
 
         <section className="generalContactSection" id="general-contact">
           <div className="contactSectionHeading">
-            <p className="eyebrow">General correspondence</p>
-            <h2>Questions, media, partnerships, and researcher access</h2>
-            <p>Keep confidential testimony, anonymous tips, private files, and urgent safety information out of general email.</p>
+            <div>
+              <p className="eyebrow">General correspondence</p>
+              <h2>Questions, media, partnerships, researcher access</h2>
+            </div>
+            <p>Keep confidential testimony, anonymous tips, and private files out of general email.</p>
           </div>
           <GeneralContactForm />
         </section>
 
-        <section className="researcherAccessNote" id="researcher-access">
+        <section className="researcherAccessNote compactResearcherNote" id="researcher-access">
           <p className="eyebrow">Researcher access</p>
-          <h2>The researcher portal will come after permissions and audit controls.</h2>
-          <p>For now, requests from journalists, attorneys, historians, advocates, researchers, or collaborating organizations belong in general correspondence. Access to restricted records should never be granted by a public-page button alone.</p>
+          <h2>Restricted access will require permissions and audit controls.</h2>
+          <p>Until that portal exists, journalists, attorneys, historians, advocates, and researchers can use general correspondence to request access or collaboration.</p>
         </section>
       </div>
     </main>
