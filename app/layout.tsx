@@ -8,6 +8,7 @@ import "./intake.css";
 import "./brand.css";
 import "./brand-case.css";
 import "./simplify.css";
+import "./home-fixes.css";
 
 export const metadata: Metadata = {
   title: "Hope Record",
