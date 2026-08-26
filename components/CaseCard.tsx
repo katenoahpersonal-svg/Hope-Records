@@ -12,7 +12,6 @@ export function CaseCard({ item }: { item: CaseRecord }) {
       <article className="caseCard priorityCard">
         <div className="casePortrait">
           <img src={displayItem.heroImage} alt={`${displayItem.name} case photograph`} />
-          <span className="casePortraitFlag">FEATURED FILE</span>
         </div>
         <div className="caseCardBody">
           <div className="caseCardHeading">
