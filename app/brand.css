@@ -1,0 +1,337 @@
+/* Hope Record — archival identity system
+   Direction: editorial archive / investigative record / human dignity
+   Palette: ink navy, blackened plum, ink blue-gray, parchment, ivory, antique brass
+*/
+
+:root {
+  --ink: #0d182a;
+  --muted: #67645f;
+  --paper: #f4efe6;
+  --paper-2: #fbf8f1;
+  --line: #d8cfbf;
+  --plum: #2b1f33;
+  --plum-2: #5b4963;
+  --lavender: #e9e2ea;
+  --rose: #eadbd6;
+  --sand: #eee6d6;
+  --sage: #dfe2d8;
+  --brand-navy: #0d182a;
+  --brand-plum: #2b1f33;
+  --brand-bluegray: #32465a;
+  --brand-stone: #a89f93;
+  --brand-parchment: #eee6d6;
+  --brand-ivory: #faf7f0;
+  --brand-brass: #c7a46a;
+  --shadow: 0 18px 46px rgba(13, 24, 42, .09);
+  --radius: 12px;
+}
+
+body {
+  color: var(--brand-navy);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(199,164,106,.08), transparent 28%),
+    #e8e1d7;
+  font-family: "Source Sans 3", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.appShell {
+  background: var(--brand-ivory);
+  border: 1px solid #cfc4b2;
+  border-radius: 18px;
+  box-shadow: 0 26px 70px rgba(13, 24, 42, .12);
+}
+
+.siteHeader {
+  height: 94px;
+  grid-template-columns: 300px 1fr auto;
+  padding: 0 34px;
+  background: rgba(250,247,240,.97);
+  border-bottom: 1px solid #d9cfbd;
+  box-shadow: 0 6px 20px rgba(13,24,42,.035);
+}
+
+.logoLink { min-width: 0; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--brand-navy);
+}
+.brandSeal {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 auto;
+}
+.brandWords {
+  display: grid;
+  gap: 2px;
+  line-height: 1;
+}
+.brandWords strong {
+  font-family: "Iowan Old Style", Baskerville, "Palatino Linotype", Georgia, serif;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+}
+.brandWords small {
+  font-family: "Source Sans 3", Inter, sans-serif;
+  font-size: 8px;
+  line-height: 1.25;
+  color: #6d6355;
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  max-width: 190px;
+}
+
+.desktopNav { gap: 30px; }
+.desktopNav a {
+  position: relative;
+  color: #303a45;
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .035em;
+}
+.desktopNav a::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  left: 0;
+  right: 100%;
+  bottom: -8px;
+  background: var(--brand-brass);
+  transition: right .18s ease;
+}
+.desktopNav a:hover { color: var(--brand-navy); }
+.desktopNav a:hover::after { right: 0; }
+
+.signInButton,
+.primaryButton {
+  background: var(--brand-navy);
+  color: var(--brand-ivory);
+  border: 1px solid var(--brand-navy);
+  border-radius: 4px;
+  padding: 12px 18px;
+  font-weight: 750;
+  font-size: 11px;
+  letter-spacing: .055em;
+  text-transform: uppercase;
+  box-shadow: none;
+}
+.signInButton:hover,
+.primaryButton:hover {
+  background: var(--brand-plum);
+  border-color: var(--brand-plum);
+}
+
+.sidebar {
+  background: #f1eadf;
+  border-right-color: #d4c8b6;
+}
+.eyebrow {
+  color: #756149;
+  letter-spacing: .16em;
+  font-size: 10px;
+}
+.topic {
+  border-radius: 5px;
+  border-color: rgba(13,24,42,.11);
+  background: rgba(250,247,240,.88);
+  box-shadow: none;
+}
+.topic-2, .topic-3, .topic-4, .topic-5, .topic-6 { background: rgba(250,247,240,.88); }
+.topic:hover { border-color: rgba(199,164,106,.7); }
+.sidebar blockquote { color: #39414a; }
+.quoteMark { color: var(--brand-brass); }
+
+.hero {
+  background:
+    linear-gradient(180deg, rgba(13,24,42,.97), rgba(24,34,45,.95) 58%, rgba(35,40,44,.92)),
+    var(--brand-navy);
+  color: var(--brand-ivory);
+  padding-top: 48px;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 235px;
+  pointer-events: none;
+  opacity: .13;
+  background-image:
+    radial-gradient(circle at 12% 34%, #c7a46a 0 1px, transparent 1.5px),
+    linear-gradient(90deg, transparent 49.8%, rgba(199,164,106,.16) 50%, transparent 50.2%);
+  background-size: 84px 84px, 140px 140px;
+}
+.heroCopy { max-width: 800px; margin-left: 5%; margin-bottom: 24px; }
+.hero .eyebrow { color: #d4b77f; }
+.hero h1,
+.innerPage h1,
+.caseHero h1,
+.priorityHeading h2,
+.sharePanel h2,
+.caseCardHeading h3,
+.timelineResearchItem strong {
+  font-family: "Iowan Old Style", Baskerville, "Palatino Linotype", Georgia, serif !important;
+}
+.hero h1 {
+  color: #fffaf0;
+  font-size: clamp(38px, 4vw, 62px);
+  line-height: 1.03;
+  letter-spacing: -.035em;
+  max-width: 770px;
+}
+.searchBox {
+  border-radius: 5px;
+  border-color: rgba(199,164,106,.5);
+  box-shadow: 0 16px 38px rgba(0,0,0,.18);
+  background: rgba(250,247,240,.98);
+}
+
+.mapPanel {
+  border-top: 1px solid rgba(199,164,106,.38);
+  background: #e5e0d8;
+}
+.missionLine {
+  background: #f3ecdf;
+  color: #574d42;
+  border-bottom-color: #d7ccbb;
+  font-family: "Iowan Old Style", Baskerville, Georgia, serif;
+  font-size: 15px;
+  letter-spacing: .035em;
+}
+
+.contentSection,
+.recordGraph { border-bottom-color: #d7ccbb; }
+.prioritySection,
+.homeShareSection,
+.recordGraph { background: var(--brand-ivory); }
+.sectionHeading a,
+.backLink,
+.caseCardBody > a,
+.documentSourceLink,
+.timelineSourceLink { color: var(--brand-plum); }
+
+.priorityHeading h2 {
+  color: var(--brand-navy);
+  letter-spacing: -.025em;
+}
+.priorityIntro { color: #67645f; }
+
+.caseCard,
+.documentCard,
+.sourceRow,
+.editorialRibbon,
+.findingCard,
+.evidenceStandardCard,
+.mediaCard,
+.privacyNotice,
+.secureIntakeWrap,
+.generalContactSection,
+.researcherAccessNote {
+  background: #fffdf8;
+  border-color: #d9cfbe;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(13,24,42,.045);
+}
+.caseCard { border-top: 2px solid var(--brand-brass); }
+.casePortraitFlag {
+  background: rgba(13,24,42,.92);
+  border-radius: 2px;
+  color: #f9f2e7;
+}
+.caseStatus {
+  background: #e8e0e7;
+  color: var(--brand-plum);
+  border-radius: 2px;
+}
+.caseTagRow span {
+  background: #f7f1e7;
+  color: #564a3e;
+  border-color: #ded2c0;
+  border-radius: 3px;
+}
+
+.editorialRibbon {
+  border-left: 3px solid var(--brand-brass);
+  color: #5d5851;
+}
+.editorialRibbon strong { color: var(--brand-navy); }
+
+.sharePanel {
+  background: linear-gradient(145deg, #efe6d8, #f8f3ea);
+  border-color: #d7c8b1;
+  border-radius: 8px;
+}
+.shareOption,
+.submissionChoice,
+.contactRouteCard {
+  border-radius: 5px !important;
+  border-color: #dbcfbd !important;
+  background: #fffdf8 !important;
+}
+.shareOption:hover,
+.submissionChoice:hover,
+.contactRouteCard:hover { border-color: var(--brand-brass) !important; }
+
+.documentThumb {
+  background: linear-gradient(145deg, #ead9b9, #fbf4e5);
+  border-color: #d2c09e;
+  border-radius: 3px;
+}
+.badge { border-radius: 2px; }
+
+.caseHeroPortrait {
+  border-radius: 8px;
+  border-color: #d3c5b3;
+  box-shadow: 0 20px 45px rgba(13,24,42,.1);
+}
+.evidenceStandardCard { border-left-color: var(--brand-brass); }
+.timelineDot {
+  background: var(--brand-brass);
+  outline-color: var(--brand-navy);
+  border-color: var(--brand-ivory);
+}
+.timelineResearchItem:not(:last-child)::before { background: #cbbda8; }
+.sourceRow:hover { border-color: var(--brand-brass); }
+.sourceRow span { color: #7b6545; }
+.sourceRow b { color: var(--brand-navy); }
+
+.caseWorkspaceNav button,
+.caseWorkspaceNav a {
+  border-radius: 3px !important;
+}
+.caseWorkspaceNav .active,
+.caseWorkspaceNav [aria-selected="true"] {
+  background: var(--brand-navy) !important;
+  color: var(--brand-ivory) !important;
+}
+
+.intakeChoiceGroup,
+.intakeSafety {
+  border-color: #d9cfbe !important;
+  background: #f8f2e8 !important;
+}
+
+/* subtle archival frame language */
+.contentSection > .sectionHeading::before,
+.innerPage > .eyebrow::before,
+.caseFileEyebrow::before {
+  content: "✦";
+  color: var(--brand-brass);
+  margin-right: 8px;
+}
+
+@media (max-width: 900px) {
+  .siteHeader { grid-template-columns: 1fr auto; height: auto; min-height: 84px; padding: 14px 20px; }
+  .desktopNav { grid-column: 1 / -1; order: 3; justify-content: flex-start; overflow-x: auto; padding-bottom: 4px; }
+  .brandWords small { display: none; }
+}
+
+@media (max-width: 620px) {
+  .appShell { width: 100%; margin: 0; border-radius: 0; border-left: 0; border-right: 0; }
+  .siteHeader { padding: 12px 16px; }
+  .brandSeal { width: 48px; height: 48px; }
+  .brandWords strong { font-size: 20px; }
+  .hero { padding-top: 36px; }
+}
