@@ -2,10 +2,10 @@ import Link from "next/link";
 
 const nodes = [
   ["RECORD", "Documents and files", "/vault"],
-  ["PEOPLE", "Individuals and communities", "/#investigations"],
+  ["PEOPLE", "Individuals and communities", "/investigations"],
   ["LOCATION", "Places that matter", "/#map"],
-  ["EVENT", "What happened and when", "/#investigations"],
-  ["IMPACT", "Ongoing effects and accountability", "/share?type=overlooked"]
+  ["EVENT", "What happened and when", "/investigations"],
+  ["IMPACT", "Ongoing effects and accountability", "/topics/questioned-findings"]
 ];
 
 export function RecordGraph() {
