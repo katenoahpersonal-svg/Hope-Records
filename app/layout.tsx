@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import "./globals.css";
 import "./priority.css";
 import "./compact.css";
@@ -10,16 +11,20 @@ import "./brand-case.css";
 import "./simplify.css";
 import "./home-fixes.css";
 import "./tighten.css";
+import "./polish.css";
 
 export const metadata: Metadata = {
   title: "Hope Record",
-  description: "Hope Record is a public-interest archive built to preserve records, protect dignity, and make evidence easier to trace.",
+  description: "Hope Record preserves records, protects dignity, and makes evidence easier to trace.",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ScrollToTop />
+        {children}
+      </body>
     </html>
   );
 }
