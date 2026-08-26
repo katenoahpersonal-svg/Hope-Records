@@ -1,22 +1,27 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "";
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@hoperecord.com";
+const validTopics = new Set(["general", "family-or-case-contact", "correction", "media", "partnership", "researcher-access"]);
 
 export function GeneralContactForm() {
   const [topic, setTopic] = useState("general");
 
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get("topic");
+    if (requested && validTopics.has(requested)) setTopic(requested);
+  }, []);
+
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!contactEmail) return;
 
     const form = new FormData(event.currentTarget);
     const name = String(form.get("name") ?? "");
     const email = String(form.get("email") ?? "");
     const organization = String(form.get("organization") ?? "");
     const message = String(form.get("message") ?? "");
-    const subject = `Hope Records contact · ${topic}`;
+    const subject = `Hope Record contact · ${topic}`;
     const body = [
       `Name: ${name}`,
       `Reply email: ${email}`,
@@ -30,10 +35,10 @@ export function GeneralContactForm() {
   }
 
   return (
-    <form className="generalContactForm" onSubmit={submit}>
-      <div className="contactFormWarning">
+    <form className="generalContactForm polishedContactForm" onSubmit={submit}>
+      <div className="contactFormWarning fullField">
         <strong>General correspondence only.</strong>
-        <p>Do not put private testimony, confidential evidence, precise safety locations, or anonymous tips in this form. Use the private intake route for those.</p>
+        <p>For private testimony, confidential evidence, precise safety locations, or anonymous tips, use private intake instead.</p>
       </div>
 
       <label>
@@ -49,6 +54,11 @@ export function GeneralContactForm() {
       </label>
 
       <label>
+        <span>Organization</span>
+        <input name="organization" type="text" placeholder="Optional" />
+      </label>
+
+      <label>
         <span>Name</span>
         <input name="name" type="text" autoComplete="name" />
       </label>
@@ -58,24 +68,15 @@ export function GeneralContactForm() {
         <input name="email" type="email" autoComplete="email" />
       </label>
 
-      <label>
-        <span>Organization</span>
-        <input name="organization" type="text" placeholder="Optional" />
-      </label>
-
       <label className="fullField">
         <span>Message</span>
-        <textarea name="message" rows={6} placeholder="General correspondence only…" />
+        <textarea name="message" rows={5} placeholder="How can we help?" />
       </label>
 
-      {contactEmail ? (
-        <button className="primaryButton fullField" type="submit">Open email to Hope Records</button>
-      ) : (
-        <div className="contactChannelPending fullField">
-          <strong>General inbox connection pending.</strong>
-          <p>The page is ready; the remaining setup step is choosing the public Hope Records contact email and adding it as <code>NEXT_PUBLIC_CONTACT_EMAIL</code> in the GitHub Pages build environment.</p>
-        </div>
-      )}
+      <div className="contactSubmitRow fullField">
+        <span>Replies open through <strong>contact@hoperecord.com</strong></span>
+        <button className="primaryButton" type="submit">Open email →</button>
+      </div>
     </form>
   );
 }
